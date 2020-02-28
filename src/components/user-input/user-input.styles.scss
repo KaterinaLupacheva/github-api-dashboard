@@ -29,5 +29,10 @@
     cursor: pointer;
     border-radius: 10px;
     width: 20vw;
+    transition: all 0.5s ease;
+
+    &:hover{
+        transform: scale(1.2);
+    }
   }
 }
