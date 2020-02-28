@@ -1,0 +1,19 @@
+.user-input-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .user-input-label{
+        color: wheat;
+        font-size: 5vh;
+    }
+
+    .user-input{
+        width: 50vw;
+        height: 8vh;
+        margin: 5vh;
+        background-color: rgb(38, 48, 60);
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+}
