@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './user-input.styles.scss';
 
 const UserInput = () => {
   const [user, setUser] = useState('');
   const onInputChange = e => setUser(e.target.value);
+  const history = useHistory();
 
   const onInputSubmit = e => {
     e.preventDefault();
-    console.log('USER ' + user);
-    fetch(`https://api.github.com/users/${user}`)
-      .then(response => response.json())
-      .then(response => console.log(JSON.stringify(response, null, 2)));
+    history.push({
+      pathname: '/user',
+      state: { user },
+    });
   };
 
   return (
