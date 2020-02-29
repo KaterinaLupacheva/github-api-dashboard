@@ -24,7 +24,7 @@ export const UserInfoContainer = styled.div`
     justify-content: center;
     align-items: center;
 
-    .company {
+    .item {
       color: ${colors.whiteColor};
       font-size: ${fontSizes.small};
       display: flex;
