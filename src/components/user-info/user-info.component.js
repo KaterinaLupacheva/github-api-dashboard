@@ -7,7 +7,7 @@ import { GoLink } from 'react-icons/go';
 import { GoCalendar } from 'react-icons/go';
 
 const UserInfo = ({ userInfo }) => {
-  console.log('User ' + JSON.stringify(userInfo, null, 2));
+  // console.log('User ' + JSON.stringify(userInfo, null, 2));
 
   return (
     <UserInfoContainer>
