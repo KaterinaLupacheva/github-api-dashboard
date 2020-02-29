@@ -17,4 +17,20 @@ export const UserInfoContainer = styled.div`
     color: ${colors.whiteColor};
     font-size: ${fontSizes.small};
   }
+
+  .user-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .company {
+      color: ${colors.whiteColor};
+      font-size: ${fontSizes.small};
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 `;
