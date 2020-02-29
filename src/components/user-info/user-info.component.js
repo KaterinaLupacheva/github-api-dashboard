@@ -1,10 +1,10 @@
 import React from 'react';
-import { UserAvatar } from './user-info.styles';
+import { UserInfoContainer } from './user-info.styles';
 
 const UserInfo = ({ userInfo }) => (
-  <div>
-    <UserAvatar src={userInfo.avatar_url} alt="user-avatar" />
-  </div>
+  <UserInfoContainer>
+    <img className="avatar" src={userInfo.avatar_url} alt="user-avatar" />
+  </UserInfoContainer>
 );
 
 export default UserInfo;
