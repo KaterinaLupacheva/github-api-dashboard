@@ -2,9 +2,9 @@ import React from 'react';
 import { UserInfoContainer } from './user-info.styles';
 import { IconContext } from 'react-icons';
 import { TiBriefcase } from 'react-icons/ti';
-import { MdLocationOn } from "react-icons/md";
-import { GoLink } from "react-icons/go";
-import { GoCalendar } from "react-icons/go";
+import { MdLocationOn } from 'react-icons/md';
+import { GoLink } from 'react-icons/go';
+import { GoCalendar } from 'react-icons/go';
 
 const UserInfo = ({ userInfo }) => {
   console.log('User ' + JSON.stringify(userInfo, null, 2));
@@ -20,37 +20,53 @@ const UserInfo = ({ userInfo }) => {
       </h2>
       <div className="bio">{userInfo.bio}</div>
       <div className="user-row">
-        <div className="item">
-          <IconContext.Provider value={{ size: '2em', color: 'white' }}>
-            <TiBriefcase />
-          </IconContext.Provider>
-          {userInfo.company}
-        </div>
-        <div className='item'>
-          <IconContext.Provider value={{ size: '2em', color: 'white'}}>
-            <MdLocationOn />
-          </IconContext.Provider>
-          {userInfo.location}
-        </div>
-        <div className='item'>
-          <IconContext.Provider value={{ size: '2em', color: 'white'}}>
-            <GoLink />
-          </IconContext.Provider>
-          <a href={`http://${userInfo.blog}`} target="_blank" rel="noopener noreferrer">
-          {userInfo.blog}
-          </a> 
-        </div>
-        <div className='item'>
-        <IconContext.Provider value={{ size: '2em', color: 'white'}}>
-          <GoCalendar />
-          Joined{' '}
-          {new Date(userInfo.created_at).toLocaleDateString('en-US', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric',
-          })}
-        </IconContext.Provider>
-        </div>
+        {userInfo.company && (
+          <div className="item">
+            <IconContext.Provider value={{ size: '2em', color: 'white' }}>
+              <TiBriefcase />
+            </IconContext.Provider>
+            {userInfo.company}
+          </div>
+        )}
+        {userInfo.location && (
+          <div className="item">
+            <IconContext.Provider value={{ size: '2em', color: 'white' }}>
+              <MdLocationOn />
+            </IconContext.Provider>
+            {userInfo.location}
+          </div>
+        )}
+        {userInfo.blog && (
+          <div className="item">
+            <IconContext.Provider value={{ size: '2em', color: 'white' }}>
+              <GoLink />
+            </IconContext.Provider>
+            <a
+              href={
+                userInfo.blog.slice(0, 4) === 'http'
+                  ? `${userInfo.blog}`
+                  : `http://${userInfo.blog}`
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {userInfo.blog}
+            </a>
+          </div>
+        )}
+        {userInfo.created_at && (
+          <div className="item">
+            <IconContext.Provider value={{ size: '2em', color: 'white' }}>
+              <GoCalendar />
+              Joined{' '}
+              {new Date(userInfo.created_at).toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              })}
+            </IconContext.Provider>
+          </div>
+        )}
       </div>
     </UserInfoContainer>
   );

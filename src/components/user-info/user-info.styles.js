@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { colors, fontSizes } from '../../global.styles';
 
 export const UserInfoContainer = styled.div`
-
   .user-name {
     color: ${colors.textColor};
     font-size: ${fontSizes.large};
@@ -25,6 +24,7 @@ export const UserInfoContainer = styled.div`
     justify-content: space-evenly;
     align-items: center;
     padding-top: 2vh;
+    flex-wrap: wrap;
 
     .item {
       color: ${colors.whiteColor};
@@ -34,7 +34,7 @@ export const UserInfoContainer = styled.div`
       justify-content: center;
       align-items: center;
 
-      svg{
+      svg {
         margin-right: 1vw;
       }
     }
