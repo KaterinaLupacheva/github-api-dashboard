@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './user-input.styles.scss';
+// import './user-input.styles.scss';
+import { UserInputForm } from './user-input.styles';
 
 const UserInput = () => {
   const [user, setUser] = useState('');
@@ -16,7 +17,7 @@ const UserInput = () => {
   };
 
   return (
-    <form className="user-input-form" onSubmit={onInputSubmit}>
+    <UserInputForm className="user-input-form" onSubmit={onInputSubmit}>
       <label className="user-input-label" htmlFor="username">
         Enter GitHub's Username
       </label>
@@ -24,7 +25,7 @@ const UserInput = () => {
       <button className="user-input-button" onClick={onInputSubmit}>
         Submit
       </button>
-    </form>
+    </UserInputForm>
   );
 };
 
