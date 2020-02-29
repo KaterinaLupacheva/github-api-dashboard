@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { colors, fontSizes } from '../../global.styles';
 
 export const UserInfoContainer = styled.div`
+
   .user-name {
     color: ${colors.textColor};
     font-size: ${fontSizes.large};
@@ -21,8 +22,9 @@ export const UserInfoContainer = styled.div`
   .user-row {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    padding-top: 2vh;
 
     .item {
       color: ${colors.whiteColor};
@@ -31,6 +33,10 @@ export const UserInfoContainer = styled.div`
       flex-direction: row;
       justify-content: center;
       align-items: center;
+
+      svg{
+        margin-right: 1vw;
+      }
     }
   }
 `;
