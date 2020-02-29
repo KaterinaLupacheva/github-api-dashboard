@@ -3,6 +3,7 @@ import { UserInfoContainer } from './user-info.styles';
 import { IconContext } from 'react-icons';
 import { TiBriefcase } from 'react-icons/ti';
 import { MdLocationOn } from "react-icons/md";
+import { GoLink } from "react-icons/go";
 
 const UserInfo = ({ userInfo }) => {
   console.log('User ' + JSON.stringify(userInfo, null, 2));
@@ -29,6 +30,18 @@ const UserInfo = ({ userInfo }) => {
             <MdLocationOn />
           </IconContext.Provider>
           {userInfo.location}
+        </div>
+        <div className='item'>
+          <IconContext.Provider value={{ size: '2em', color: 'white'}}>
+            <GoLink />
+          </IconContext.Provider>
+          <a href={`http://${userInfo.blog}`} target="_blank" rel="noopener noreferrer">
+          {userInfo.blog}
+          </a> 
+        </div>
+        <div className='item'>
+        <IconContext.Provider value={{ size: '2em', color: 'white'}}>
+          </IconContext.Provider>
         </div>
       </div>
     </UserInfoContainer>
