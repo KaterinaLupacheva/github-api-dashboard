@@ -23,7 +23,7 @@ export const UserInfoContainer = styled.div`
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    padding-top: 2vh;
+    padding-top: 5vh;
     flex-wrap: wrap;
 
     .item {
@@ -37,6 +37,27 @@ export const UserInfoContainer = styled.div`
       svg {
         margin-right: 1vw;
       }
+    }
+  }
+
+  .user-info-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: ${colors.textColor};
+    font-size: ${fontSizes.small};
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin: 5vh;
+      width: 20vw;
+      height: 15vh;
+      border: 1px solid black;
+      background-color: ${colors.backgroundLightDark};
     }
   }
 `;

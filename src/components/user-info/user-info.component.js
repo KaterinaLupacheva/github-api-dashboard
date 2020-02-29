@@ -19,6 +19,7 @@ const UserInfo = ({ userInfo }) => {
         </a>
       </h2>
       <div className="bio">{userInfo.bio}</div>
+
       <div className="user-row">
         {userInfo.company && (
           <div className="item">
@@ -65,6 +66,21 @@ const UserInfo = ({ userInfo }) => {
                 year: 'numeric',
               })}
             </IconContext.Provider>
+          </div>
+        )}
+      </div>
+
+      <div className="user-info-cards">
+        {userInfo.followers && (
+          <div className="card">
+            <span>{userInfo.followers}</span>
+            <span>Followers</span>
+          </div>
+        )}
+        {userInfo.public_repos && (
+          <div className="card">
+            <span>{userInfo.public_repos}</span>
+            <span>Repositories</span>
           </div>
         )}
       </div>
