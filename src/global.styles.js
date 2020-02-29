@@ -11,6 +11,7 @@ export const colors = {
 export const fontSizes = {
   large: '10vh',
   medium: '5vh',
+  small: '3vh',
 };
 
 const GlobalStyle = createGlobalStyle`

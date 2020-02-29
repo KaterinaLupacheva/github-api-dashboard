@@ -12,4 +12,9 @@ export const UserInfoContainer = styled.div`
     width: 150px;
     height: 150px;
   }
+
+  .bio {
+    color: ${colors.whiteColor};
+    font-size: ${fontSizes.small};
+  }
 `;
