@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import UserInfo from '../components/user-info/user-info.component';
 
 const UserPage = props => {
   const [error, setError] = useState({ active: false, status: 200 });
@@ -27,7 +28,7 @@ const UserPage = props => {
       {error && error.active ? (
         <div>{error.status}</div>
       ) : (
-        <>{userInfo && <img src={userInfo.avatar_url} alt="user-avatar" />}</>
+        <>{userInfo && <UserInfo userInfo={userInfo} />}</>
       )}
     </div>
   );
