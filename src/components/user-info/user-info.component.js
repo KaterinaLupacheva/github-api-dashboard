@@ -4,6 +4,7 @@ import { IconContext } from 'react-icons';
 import { TiBriefcase } from 'react-icons/ti';
 import { MdLocationOn } from "react-icons/md";
 import { GoLink } from "react-icons/go";
+import { GoCalendar } from "react-icons/go";
 
 const UserInfo = ({ userInfo }) => {
   console.log('User ' + JSON.stringify(userInfo, null, 2));
@@ -41,7 +42,14 @@ const UserInfo = ({ userInfo }) => {
         </div>
         <div className='item'>
         <IconContext.Provider value={{ size: '2em', color: 'white'}}>
-          </IconContext.Provider>
+          <GoCalendar />
+          Joined{' '}
+          {new Date(userInfo.created_at).toLocaleDateString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+          })}
+        </IconContext.Provider>
         </div>
       </div>
     </UserInfoContainer>
