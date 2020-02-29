@@ -1,8 +1,9 @@
 import React from 'react';
+import { UserAvatar } from './user-info.styles';
 
 const UserInfo = ({ userInfo }) => (
   <div>
-    <img src={userInfo.avatar_url} alt="user-avatar" />
+    <UserAvatar src={userInfo.avatar_url} alt="user-avatar" />
   </div>
 );
 
