@@ -8,20 +8,23 @@ const UserPage = props => {
   const location = useLocation();
 
   useEffect(() => {
-    const user = location.state.user;
-    fetch(`https://api.github.com/users/${user}`)
-      .then(resp => {
-        if (resp.status === 403) {
-          return setError({ active: true, status: 403 });
-        }
-        if (resp.status === 404) {
-          return setError({ active: true, status: 404 });
-        }
-        return resp.json();
-      })
-      .then(json => setUserInfo(json))
-      .catch(error => setError({ active: true, status: 400 }));
-  });
+    const getUserInfo = () => {
+      fetch(`https://api.github.com/users/${location.state.user}`)
+        .then(resp => {
+          if (resp.status === 403) {
+            return setError({ active: true, status: 403 });
+          }
+          if (resp.status === 404) {
+            return setError({ active: true, status: 404 });
+          }
+          return resp.json();
+        })
+        .then(json => setUserInfo(json))
+        .catch(error => setError({ active: true, status: 400 }));
+    };
+
+    getUserInfo();
+  }, [location]);
 
   return (
     <div>

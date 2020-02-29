@@ -8,6 +8,11 @@ export const colors = {
   secondaryColor: '#E6DF44',
 };
 
+export const fontSizes = {
+  large: '10vh',
+  medium: '5vh',
+};
+
 const GlobalStyle = createGlobalStyle`
     body{
         text-align: center;

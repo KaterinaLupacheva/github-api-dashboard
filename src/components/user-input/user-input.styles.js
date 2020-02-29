@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../global.styles';
+import { colors, fontSizes } from '../../global.styles';
 
 export const UserInputForm = styled.form`
   display: flex;
@@ -8,7 +8,7 @@ export const UserInputForm = styled.form`
 
   .user-input-label {
     color: ${colors.textColor};
-    font-size: 5vh;
+    font-size: ${fontSizes.medium};
   }
 
   .user-input {
@@ -18,7 +18,7 @@ export const UserInputForm = styled.form`
     background-color: ${colors.backgroundLightDark};
     border: 1px solid black;
     border-radius: 5px;
-    font-size: 5vh;
+    font-size: ${fontSizes.medium};
     color: ${colors.whiteColor};
     font-weight: 400;
   }
@@ -26,7 +26,7 @@ export const UserInputForm = styled.form`
   .user-input-button {
     background-color: ${colors.backgroundLightDark};
     height: 8vh;
-    font-size: 5vh;
+    font-size: ${fontSizes.medium};
     color: ${colors.textColor};
     border-color: ${colors.backgroundDark};
     font-weight: 400;
