@@ -69,6 +69,12 @@ const UserInfo = ({ userInfo, languages }) => {
       </div>
 
       <div className="user-info-cards">
+        {languages && (
+          <div className="card">
+            <span>{Object.keys(languages).length}</span>
+            <span>Languages Used</span>
+          </div>
+        )}
         {userInfo.followers && (
           <div className="card">
             <span>{userInfo.followers}</span>
@@ -79,12 +85,6 @@ const UserInfo = ({ userInfo, languages }) => {
           <div className="card">
             <span>{userInfo.public_repos}</span>
             <span>Repositories</span>
-          </div>
-        )}
-        {languages && (
-          <div className="card">
-            <span>{Object.keys(languages).length}</span>
-            <span>Languages Used</span>
           </div>
         )}
       </div>
