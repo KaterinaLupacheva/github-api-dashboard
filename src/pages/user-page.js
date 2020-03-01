@@ -8,24 +8,25 @@ const UserPage = props => {
   const [userInfo, setUserInfo] = useState(null);
   const [languages, setLanguages] = useState(null);
   const location = useLocation();
+  const user = location.state.user;
 
   useEffect(() => {
     const getData = async () => {
       try {
         //fetch user info
-        const userIn = await fetchData(`https://api.github.com/users/${location.state.user}`);
+        const userIn = await fetchData(`https://api.github.com/users/${user}`);
         setUserInfo(userIn);
         //fetch user's repos
-        const repos = await fetchData(`https://api.github.com/users/${location.state.user}/repos`);
+        const repos = await fetchData(`https://api.github.com/users/${user}/repos`);
         //fetch languages of all repos
-        const lan = await fetchAllLanguages(repos);
+        const lan = await fetchAllLanguages(repos, user);
         setLanguages(lan);
       } catch (error) {
         setIsError(true);
       }
     };
     getData();
-  }, [location.state.user]);
+  }, [user]);
 
   return (
     <div>
