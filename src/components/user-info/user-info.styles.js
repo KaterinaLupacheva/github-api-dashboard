@@ -57,7 +57,14 @@ export const UserInfoContainer = styled.div`
       width: 20vw;
       height: 15vh;
       border: 1px solid black;
+      border-radius: 10px;
       background-color: ${colors.backgroundLightDark};
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 `;

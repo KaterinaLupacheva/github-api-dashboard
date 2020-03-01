@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { UserInfoContainer } from './user-info.styles';
 import { IconContext } from 'react-icons';
 import { TiBriefcase } from 'react-icons/ti';
@@ -6,8 +6,43 @@ import { MdLocationOn } from 'react-icons/md';
 import { GoLink } from 'react-icons/go';
 import { GoCalendar } from 'react-icons/go';
 
-const UserInfo = ({ userInfo }) => {
-  // console.log('User ' + JSON.stringify(userInfo, null, 2));
+const UserInfo = ({ userInfo, repo }) => {
+  const [languages, setLanguages] = useState([]);
+  const lang = {};
+
+  const fetchUrl = async url => {
+    const languages = await fetch(url);
+    const data = await languages.json();
+    return data;
+  };
+
+  const fetchLanguages = async names => {
+    const requests = names.map(async name => {
+      const url = `https://api.github.com/repos/KaterinaLupacheva/${name}/languages`;
+      const a = await fetchUrl(url);
+      return a;
+    });
+    return Promise.all(requests);
+  };
+
+  const combineLanguages = data => {
+    for (let [key, value] of Object.entries(data)) {
+      if (lang[key]) {
+        lang[key] += value;
+      } else {
+        lang[key] = value;
+      }
+    }
+  };
+
+  useEffect(() => {
+    const names = repo.filter(r => !r.fork).map(rep => rep.name);
+    fetchLanguages(names)
+      .then(a => {
+        a.forEach(ar => combineLanguages(ar));
+      })
+      .then(j => setLanguages(lang));
+  }, []);
 
   return (
     <UserInfoContainer>
@@ -81,6 +116,12 @@ const UserInfo = ({ userInfo }) => {
           <div className="card">
             <span>{userInfo.public_repos}</span>
             <span>Repositories</span>
+          </div>
+        )}
+        {languages && (
+          <div className="card">
+            <span>{Object.keys(languages).length}</span>
+            <span>Languages Used</span>
           </div>
         )}
       </div>
