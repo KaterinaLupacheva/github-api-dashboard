@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import UserInfo from '../components/user-info/user-info.component';
-import { fetchData } from '../utils/fetchData';
+import { fetchData, fetchAllLanguages } from '../utils/fetchData';
 
 const UserPage = props => {
   const [error, setIsError] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
-  const [repoData, setRepoData] = useState(null);
+  const [languages, setLanguages] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
     const getData = async () => {
       try {
+        //fetch user info
         const userIn = await fetchData(`https://api.github.com/users/${location.state.user}`);
         setUserInfo(userIn);
+        //fetch user's repos
         const repos = await fetchData(`https://api.github.com/users/${location.state.user}/repos`);
-        setRepoData(repos);
+        //fetch languages of all repos
+        const lan = await fetchAllLanguages(repos);
+        setLanguages(lan);
       } catch (error) {
         setIsError(true);
       }
@@ -28,7 +32,7 @@ const UserPage = props => {
       {error ? (
         <div>{'ERROR'}</div>
       ) : (
-        <>{userInfo && repoData && <UserInfo userInfo={userInfo} repo={repoData} />}</>
+        <>{(userInfo || languages) && <UserInfo userInfo={userInfo} languages={languages} />}</>
       )}
     </div>
   );
