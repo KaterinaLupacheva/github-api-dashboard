@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import UserInfo from '../components/user-info/user-info.component';
+import RateLimit from '../components/rate-limit/rate-limit.component';
 import { fetchData, fetchAllLanguages } from '../utils/fetchData';
 
 const UserPage = props => {
   const [error, setIsError] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const [languages, setLanguages] = useState(null);
+  const [rateLimit, setRateLimit] = useState(null);
   const location = useLocation();
   const user = location.state.user;
 
   useEffect(() => {
     const getData = async () => {
       try {
+        //fetch number of requests left
+        const rateLimit = await fetchData(`https://api.github.com/rate_limit`);
+        setRateLimit(rateLimit.resources.core);
+        if (rateLimit.resources.core.remaining < 1) {
+          setIsError(true);
+        }
         //fetch user info
-        const userIn = await fetchData(`https://api.github.com/users/${user}`);
-        setUserInfo(userIn);
+        const userInfo = await fetchData(`https://api.github.com/users/${user}`);
+        setUserInfo(userInfo);
         //fetch user's repos
         const repos = await fetchData(`https://api.github.com/users/${user}/repos`);
         //fetch languages of all repos
@@ -33,7 +41,10 @@ const UserPage = props => {
       {error ? (
         <div>{'ERROR'}</div>
       ) : (
-        <>{(userInfo || languages) && <UserInfo userInfo={userInfo} languages={languages} />}</>
+        <>
+          {rateLimit && <RateLimit rateLimit={rateLimit} />}
+          {(userInfo || languages) && <UserInfo userInfo={userInfo} languages={languages} />}
+        </>
       )}
     </div>
   );
