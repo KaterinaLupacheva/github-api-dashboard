@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { UserInfoContainer, CardButton } from './user-info.styles';
 import { IconContext } from 'react-icons';
 import { TiBriefcase } from 'react-icons/ti';
@@ -6,7 +6,13 @@ import { MdLocationOn } from 'react-icons/md';
 import { GoLink } from 'react-icons/go';
 import { GoCalendar } from 'react-icons/go';
 
-const UserInfo = ({ userInfo, languages, languagesIsPressed, toggleLanguagesIsPressed }) => {
+const UserInfo = ({
+  userInfo,
+  languages,
+  languagesIsPressed,
+  followersIsPressed,
+  togglePressed,
+}) => {
   return (
     <UserInfoContainer>
       <div className="user-name">{userInfo.name}</div>
@@ -72,14 +78,19 @@ const UserInfo = ({ userInfo, languages, languagesIsPressed, toggleLanguagesIsPr
         {languages && (
           <CardButton
             className={`${languagesIsPressed ? 'pressed' : ''} card`}
-            onClick={toggleLanguagesIsPressed}
+            value={'lang'}
+            onClick={() => togglePressed('lang')}
           >
             <span>{Object.keys(languages).length}</span>
             <span>Languages Used</span>
           </CardButton>
         )}
         {userInfo.followers && (
-          <CardButton className="card">
+          <CardButton
+            className={`${followersIsPressed ? 'pressed' : ''} card`}
+            value={'fol'}
+            onClick={() => togglePressed('fol')}
+          >
             <span>{userInfo.followers}</span>
             <span>Followers</span>
           </CardButton>

@@ -9,7 +9,6 @@ const Followers = ({ user, setError }) => {
     const getFollowers = async () => {
       try {
         const result = await fetchData(`https://api.github.com/users/${user}/followers`);
-        console.log(result);
         setFollowers(result);
       } catch (error) {
         setError();
