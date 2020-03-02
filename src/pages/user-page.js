@@ -4,12 +4,14 @@ import UserInfo from '../components/user-info/user-info.component';
 import RateLimit from '../components/rate-limit/rate-limit.component';
 import PieChart from '../components/charts/pie-chart.component';
 import Followers from '../components/followers/followers.component';
+import Repos from '../components/repos/repos.component';
 import { fetchData, fetchAllLanguages } from '../utils/fetchData';
 import { dataForPieChart } from '../utils/prepareDataForChart';
 
 const UserPage = props => {
   const [error, setIsError] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
+  const [userRepos, setUserRepos] = useState(null);
   const [languages, setLanguages] = useState(null);
   const [rateLimit, setRateLimit] = useState(null);
   const [languagesIsPressed, setLanguagesIsPressed] = useState(true);
@@ -56,6 +58,7 @@ const UserPage = props => {
         setUserInfo(userInfo);
         //fetch user's repos
         const repos = await fetchData(`https://api.github.com/users/${user}/repos`);
+        setUserRepos(repos);
         //fetch languages of all repos
         const lan = await fetchAllLanguages(repos, user);
         setLanguages(lan);
@@ -85,6 +88,7 @@ const UserPage = props => {
           )}
           {languages && languagesIsPressed && <PieChart data={dataForPieChart(languages)} />}
           {followersIsPressed && <Followers user={user} setError={() => setIsError(true)} />}
+          {userRepos && reposIsPressed && <Repos data={userRepos} />}
         </>
       )}
     </div>
