@@ -1,5 +1,5 @@
 import React from 'react';
-import { RepoCardContainer } from './repo-card.styles';
+import { RepoCardContainer, RibbonContainer } from './repo-card.styles';
 import { GoStar } from 'react-icons/go';
 import { GoRepoForked } from 'react-icons/go';
 import { GoPrimitiveDot } from 'react-icons/go';
@@ -8,6 +8,11 @@ import { GoCalendar } from 'react-icons/go';
 const RepoCard = ({ repo }) => {
   return (
     <RepoCardContainer>
+      {repo.fork && (
+        <RibbonContainer>
+          <span>Forked</span>
+        </RibbonContainer>
+      )}
       <div className="name">{repo.name}</div>
       <div className="description">{repo.description}</div>
       <div className="stats-row">
@@ -33,7 +38,6 @@ const RepoCard = ({ repo }) => {
           })}
         </div>
       </div>
-      <div>{repo.fork}</div>
       <div>{repo.homepage}</div>
       <div>{repo.open_issues_count}</div>
       {/* <div>{repo.contributors_url}</div> */}
