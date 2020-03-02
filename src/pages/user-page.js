@@ -4,6 +4,7 @@ import UserInfo from '../components/user-info/user-info.component';
 import RateLimit from '../components/rate-limit/rate-limit.component';
 import PieChart from '../components/charts/pie-chart.component';
 import { fetchData, fetchAllLanguages } from '../utils/fetchData';
+import { dataForPieChart } from '../utils/prepareDataForChart';
 
 const UserPage = props => {
   const [error, setIsError] = useState(false);
@@ -45,7 +46,7 @@ const UserPage = props => {
         <>
           {rateLimit && <RateLimit rateLimit={rateLimit} />}
           {(userInfo || languages) && <UserInfo userInfo={userInfo} languages={languages} />}
-          {languages && <PieChart data={languages}/>}
+          {languages && <PieChart data={dataForPieChart(languages)} />}
         </>
       )}
     </div>
