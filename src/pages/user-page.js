@@ -13,8 +13,8 @@ const UserPage = props => {
   const [languages, setLanguages] = useState(null);
   const [rateLimit, setRateLimit] = useState(null);
   const [languagesIsPressed, setLanguagesIsPressed] = useState(true);
-  // const [languagesChartIsActive, setLanguagesChartIsActive] = useState(true);
   const [followersIsPressed, setFollowersIsPressed] = useState(false);
+  const [reposIsPressed, setReposIsPressed] = useState(false);
   const location = useLocation();
   const user = location.state.user;
 
@@ -22,16 +22,23 @@ const UserPage = props => {
     switch (e) {
       case 'lang':
         setLanguagesIsPressed(true);
-        // setLanguagesChartIsActive(true);
         setFollowersIsPressed(false);
+        setReposIsPressed(false);
         break;
       case 'fol':
         setFollowersIsPressed(true);
         setLanguagesIsPressed(false);
+        setReposIsPressed(false);
         break;
       case 'repos':
+        setLanguagesIsPressed(false);
+        setFollowersIsPressed(false);
+        setReposIsPressed(true);
         break;
       default:
+        setLanguagesIsPressed(true);
+        setFollowersIsPressed(false);
+        setReposIsPressed(false);
     }
   };
 
@@ -72,6 +79,7 @@ const UserPage = props => {
               languages={languages}
               languagesIsPressed={languagesIsPressed}
               followersIsPressed={followersIsPressed}
+              reposIsPressed={reposIsPressed}
               togglePressed={e => togglePressed(e)}
             />
           )}

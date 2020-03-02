@@ -11,6 +11,7 @@ const UserInfo = ({
   languages,
   languagesIsPressed,
   followersIsPressed,
+  reposIsPressed,
   togglePressed,
 }) => {
   return (
@@ -96,7 +97,11 @@ const UserInfo = ({
           </CardButton>
         )}
         {userInfo.public_repos && (
-          <CardButton className="card">
+          <CardButton
+            className={`${reposIsPressed ? 'pressed' : ''} card`}
+            value={'repos'}
+            onClick={() => togglePressed('repos')}
+          >
             <span>{userInfo.public_repos}</span>
             <span>Repositories</span>
           </CardButton>
