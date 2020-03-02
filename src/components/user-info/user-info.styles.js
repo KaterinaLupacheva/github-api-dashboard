@@ -48,23 +48,29 @@ export const UserInfoContainer = styled.div`
     flex-wrap: wrap;
     color: ${colors.textColor};
     font-size: ${fontSizes.small};
+    font-weight: 700;
+  }
+`;
 
-    .card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      margin: 5vh;
-      width: 20vw;
-      height: 15vh;
-      border: 1px solid black;
-      border-radius: 10px;
-      background-color: ${colors.backgroundLightDark};
-      cursor: pointer;
-      transition: all 0.3s ease;
+export const CardButton = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 5vh;
+  width: 20vw;
+  height: 15vh;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: ${colors.backgroundLightDark};
+  cursor: pointer;
+  transition: all 0.3s ease;
 
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
+  &.pressed {
+    background-color: ${colors.secondaryColor};
+    color: ${colors.backgroundDark};
+  }
+
+  &:hover {
+    transform: scale(1.1);
   }
 `;

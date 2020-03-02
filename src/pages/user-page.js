@@ -11,6 +11,7 @@ const UserPage = props => {
   const [userInfo, setUserInfo] = useState(null);
   const [languages, setLanguages] = useState(null);
   const [rateLimit, setRateLimit] = useState(null);
+  const [languagesIsPressed, toggleLanguagesIsPressed] = useState(true);
   const location = useLocation();
   const user = location.state.user;
 
@@ -45,7 +46,14 @@ const UserPage = props => {
       ) : (
         <>
           {rateLimit && <RateLimit rateLimit={rateLimit} />}
-          {(userInfo || languages) && <UserInfo userInfo={userInfo} languages={languages} />}
+          {(userInfo || languages) && (
+            <UserInfo
+              userInfo={userInfo}
+              languages={languages}
+              languagesIsPressed={languagesIsPressed}
+              toggleLanguagesIsPressed={() => toggleLanguagesIsPressed(!languagesIsPressed)}
+            />
+          )}
           {languages && <PieChart data={dataForPieChart(languages)} />}
         </>
       )}

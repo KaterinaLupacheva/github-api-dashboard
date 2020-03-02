@@ -1,12 +1,20 @@
-import React from 'react';
-import { UserInfoContainer } from './user-info.styles';
+import React, { useState } from 'react';
+import { UserInfoContainer, CardButton } from './user-info.styles';
 import { IconContext } from 'react-icons';
 import { TiBriefcase } from 'react-icons/ti';
 import { MdLocationOn } from 'react-icons/md';
 import { GoLink } from 'react-icons/go';
 import { GoCalendar } from 'react-icons/go';
 
-const UserInfo = ({ userInfo, languages }) => {
+const UserInfo = ({ userInfo, languages, languagesIsPressed, toggleLanguagesIsPressed }) => {
+  // const [languagesIsPressed, toggleLanguagesIsPressed] = useState(true);
+  // let languagesIsPressed = true;
+
+  // const togglePressed = () => {
+  //   languagesIsPressed ? languagesIsPressed = false : languagesIsPressed = true;
+  //   console.log(languagesIsPressed)
+  // }
+
   return (
     <UserInfoContainer>
       <div className="user-name">{userInfo.name}</div>
@@ -70,22 +78,25 @@ const UserInfo = ({ userInfo, languages }) => {
 
       <div className="user-info-cards">
         {languages && (
-          <div className="card">
+          <CardButton
+            className={`${languagesIsPressed ? 'pressed' : ''} card`}
+            onClick={toggleLanguagesIsPressed}
+          >
             <span>{Object.keys(languages).length}</span>
             <span>Languages Used</span>
-          </div>
+          </CardButton>
         )}
         {userInfo.followers && (
-          <div className="card">
+          <CardButton className="card">
             <span>{userInfo.followers}</span>
             <span>Followers</span>
-          </div>
+          </CardButton>
         )}
         {userInfo.public_repos && (
-          <div className="card">
+          <CardButton className="card">
             <span>{userInfo.public_repos}</span>
             <span>Repositories</span>
-          </div>
+          </CardButton>
         )}
       </div>
     </UserInfoContainer>
