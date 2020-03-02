@@ -12,6 +12,7 @@ export const fontSizes = {
   large: '10vh',
   medium: '5vh',
   small: '3vh',
+  xs: '1vh',
 };
 
 const GlobalStyle = createGlobalStyle`
