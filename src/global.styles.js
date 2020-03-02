@@ -6,6 +6,7 @@ export const colors = {
   textColor: '#F0810F',
   whiteColor: '#ffffff',
   secondaryColor: '#E6DF44',
+  linkColor: '#b884e3',
 };
 
 export const fontSizes = {

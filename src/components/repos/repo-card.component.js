@@ -14,7 +14,15 @@ const RepoCard = ({ repo }) => {
         </RibbonContainer>
       )}
       <div className="name">{repo.name}</div>
+      <div className="website">
+        {repo.homepage && (
+          <a href={repo.homepage} target="_blank" rel="noopener noreferrer">
+            Website
+          </a>
+        )}
+      </div>
       <div className="description">{repo.description}</div>
+
       <div className="stats-row">
         <div>
           <GoStar />
@@ -25,12 +33,16 @@ const RepoCard = ({ repo }) => {
           {repo.forks}
         </div>
         <div>
-          <GoPrimitiveDot />
-          {repo.language}
+          {repo.language && (
+            <>
+              <GoPrimitiveDot />
+              {repo.language}
+            </>
+          )}
         </div>
         <div>
           <GoCalendar />
-          Created{' '}
+          {repo.fork ? 'Forked ' : 'Created '}
           {new Date(repo.created_at).toLocaleDateString('en-US', {
             month: 'short',
             day: 'numeric',
@@ -38,7 +50,7 @@ const RepoCard = ({ repo }) => {
           })}
         </div>
       </div>
-      <div>{repo.homepage}</div>
+
       <div>{repo.open_issues_count}</div>
       {/* <div>{repo.contributors_url}</div> */}
       <div>commits</div>

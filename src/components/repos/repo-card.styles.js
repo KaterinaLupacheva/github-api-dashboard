@@ -16,17 +16,29 @@ export const RepoCardContainer = styled.div`
     font-weight: 500;
   }
 
+  .website {
+    padding: 2vmin;
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: ${colors.linkColor};
+      font-weight: 700;
+    }
+  }
+
   .description {
     text-align: left;
-    padding-top: 2vh;
+    padding: 2vmin;
   }
 
   .stats-row {
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
     width: 100%;
     justify-content: space-between;
+    padding: 2vmin 0;
 
     svg {
       margin-right: 0.5vw;
