@@ -18,10 +18,9 @@ export const RepoCardContainer = styled.div`
 
   .website {
     padding: 2vmin;
+    
     a {
-      text-decoration: none;
       text-transform: uppercase;
-      color: ${colors.linkColor};
       font-weight: 700;
     }
   }

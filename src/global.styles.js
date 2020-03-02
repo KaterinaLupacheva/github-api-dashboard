@@ -20,6 +20,11 @@ const GlobalStyle = createGlobalStyle`
     body{
         text-align: center;
         background: ${colors.backgroundDark};
+
+        a {
+          text-decoration: none;
+          color: ${colors.linkColor};
+        }
         
         #root{
             min-height: 100vh;
