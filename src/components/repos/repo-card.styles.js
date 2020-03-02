@@ -18,7 +18,11 @@ export const RepoCardContainer = styled.div`
 
   .website {
     padding: 2vmin;
-    
+
+    svg {
+      margin-right: 0.5vw;
+    }
+
     a {
       text-transform: uppercase;
       font-weight: 700;

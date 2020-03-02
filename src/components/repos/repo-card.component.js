@@ -4,6 +4,7 @@ import { GoStar } from 'react-icons/go';
 import { GoRepoForked } from 'react-icons/go';
 import { GoPrimitiveDot } from 'react-icons/go';
 import { GoCalendar } from 'react-icons/go';
+import { IoIosGlobe } from 'react-icons/io';
 
 const RepoCard = ({ repo }) => {
   return (
@@ -16,9 +17,12 @@ const RepoCard = ({ repo }) => {
       <div className="name">{repo.name}</div>
       <div className="website">
         {repo.homepage && (
-          <a href={repo.homepage} target="_blank" rel="noopener noreferrer">
-            Website
-          </a>
+          <>
+            <IoIosGlobe />
+            <a href={repo.homepage} target="_blank" rel="noopener noreferrer">
+              Website
+            </a>
+          </>
         )}
       </div>
       <div className="description">{repo.description}</div>
