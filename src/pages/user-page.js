@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import UserInfo from '../components/user-info/user-info.component';
 import RateLimit from '../components/rate-limit/rate-limit.component';
+import PieChart from '../components/charts/pie-chart.component';
 import { fetchData, fetchAllLanguages } from '../utils/fetchData';
 
 const UserPage = props => {
@@ -44,6 +45,7 @@ const UserPage = props => {
         <>
           {rateLimit && <RateLimit rateLimit={rateLimit} />}
           {(userInfo || languages) && <UserInfo userInfo={userInfo} languages={languages} />}
+          {languages && <PieChart data={languages}/>}
         </>
       )}
     </div>
