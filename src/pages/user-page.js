@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import UserInfo from '../components/user-info/user-info.component';
 import RateLimit from '../components/rate-limit/rate-limit.component';
 import PieChart from '../components/charts/pie-chart.component';
+import Followers from '../components/followers/followers.component';
 import { fetchData, fetchAllLanguages } from '../utils/fetchData';
 import { dataForPieChart } from '../utils/prepareDataForChart';
 
@@ -13,6 +14,7 @@ const UserPage = props => {
   const [rateLimit, setRateLimit] = useState(null);
   const [languagesIsPressed, toggleLanguagesIsPressed] = useState(true);
   const [languagesChartIsActive, toggleLanhuagesChartIsActive] = useState(true);
+  // const [followersIsPressed, toggleFollowersIsPressed] = useState(false);
   const location = useLocation();
   const user = location.state.user;
 
@@ -59,6 +61,7 @@ const UserPage = props => {
             />
           )}
           {languages && languagesChartIsActive && <PieChart data={dataForPieChart(languages)} />}
+          {<Followers user={user} setError={() => setIsError(true)} />}
         </>
       )}
     </div>
