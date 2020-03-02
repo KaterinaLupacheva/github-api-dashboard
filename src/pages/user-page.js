@@ -12,6 +12,7 @@ const UserPage = props => {
   const [languages, setLanguages] = useState(null);
   const [rateLimit, setRateLimit] = useState(null);
   const [languagesIsPressed, toggleLanguagesIsPressed] = useState(true);
+  const [languagesChartIsActive, toggleLanhuagesChartIsActive] = useState(true);
   const location = useLocation();
   const user = location.state.user;
 
@@ -51,10 +52,13 @@ const UserPage = props => {
               userInfo={userInfo}
               languages={languages}
               languagesIsPressed={languagesIsPressed}
-              toggleLanguagesIsPressed={() => toggleLanguagesIsPressed(!languagesIsPressed)}
+              toggleLanguagesIsPressed={() => {
+                toggleLanguagesIsPressed(!languagesIsPressed);
+                toggleLanhuagesChartIsActive(!languagesChartIsActive);
+              }}
             />
           )}
-          {languages && <PieChart data={dataForPieChart(languages)} />}
+          {languages && languagesChartIsActive && <PieChart data={dataForPieChart(languages)} />}
         </>
       )}
     </div>

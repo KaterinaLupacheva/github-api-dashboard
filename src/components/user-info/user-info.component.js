@@ -7,14 +7,6 @@ import { GoLink } from 'react-icons/go';
 import { GoCalendar } from 'react-icons/go';
 
 const UserInfo = ({ userInfo, languages, languagesIsPressed, toggleLanguagesIsPressed }) => {
-  // const [languagesIsPressed, toggleLanguagesIsPressed] = useState(true);
-  // let languagesIsPressed = true;
-
-  // const togglePressed = () => {
-  //   languagesIsPressed ? languagesIsPressed = false : languagesIsPressed = true;
-  //   console.log(languagesIsPressed)
-  // }
-
   return (
     <UserInfoContainer>
       <div className="user-name">{userInfo.name}</div>
