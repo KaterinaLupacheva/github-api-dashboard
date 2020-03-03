@@ -100,7 +100,7 @@ const UserPage = props => {
           >
             {rateLimit && <RateLimit rateLimit={rateLimit} />}
             {userIsPressed && (userInfo || languages) && <UserInfo userInfo={userInfo} />}
-            {languagesIsPressed && <LanguagesPage languages={languages} />}
+            {languages && languagesIsPressed && <LanguagesPage languages={languages} />}
             {followersIsPressed && <Followers user={user} setError={() => setIsError(true)} />}
             {userRepos && reposIsPressed && <Repos data={userRepos} />}
           </Sidebar>

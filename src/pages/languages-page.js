@@ -22,6 +22,7 @@ const LanguagesPage = ({ languages }) => {
         const share = Math.round((value / totalSum) * 100);
         result.push({ key, share });
       }
+      result.sort((a, b) => b.share - a.share);
       setStructure(result);
     };
 

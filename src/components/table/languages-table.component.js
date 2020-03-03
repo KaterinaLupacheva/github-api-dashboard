@@ -1,7 +1,8 @@
 import React from 'react';
+import { TableContainer } from './languages-table.styles';
 
 const LanguagesTable = ({ data }) => (
-  <table>
+  <TableContainer>
     <tr>
       <th>Language</th>
       <th>Share</th>
@@ -10,10 +11,13 @@ const LanguagesTable = ({ data }) => (
     {data.map(lang => (
       <tr>
         <td>{lang.key}</td>
-        <td>{lang.share}</td>
+        <td>
+          {lang.share}
+          {'%'}
+        </td>
       </tr>
     ))}
-  </table>
+  </TableContainer>
 );
 
 export default LanguagesTable;
