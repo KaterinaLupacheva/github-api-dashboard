@@ -1,24 +1,23 @@
-.sidebar-option-container {
-  &:hover a {
+.sidebar-option {
+  display: block;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: white;
+  padding-left: 40px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid black;
+  transition: 0.4s;
+
+  &:hover {
     padding-left: 50px;
   }
 
-  .sidebar-option {
-    display: block;
-    text-decoration: none;
-    height: 100%;
-    width: 100%;
-    line-height: 65px;
-    font-size: 20px;
-    color: white;
-    padding-left: 40px;
-    box-sizing: border-box;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid black;
-    transition: 0.4s;
-
-    svg {
-      margin-right: 16px;
-    }
+  svg {
+    margin-right: 16px;
   }
 }
