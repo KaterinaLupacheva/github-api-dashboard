@@ -2,14 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PieChart from '../components/charts/pie-chart.component';
 import { dataForPieChart } from '../utils/prepareDataForChart';
 import LanguagesTable from '../components/table/languages-table.component';
-import styled from 'styled-components';
-import { colors, fontSizes } from '../global.styles';
-
-const TotalLanguages = styled.div`
-  padding: 10vh 0 5vh 0;
-  color: ${colors.textColor};
-  font-size: ${fontSizes.medium};
-`;
+import { TotalLanguages, DataRow } from './languages-page.styles';
 
 const LanguagesPage = ({ languages }) => {
   const [structure, setStructure] = useState([]);
@@ -32,8 +25,10 @@ const LanguagesPage = ({ languages }) => {
   return (
     <>
       <TotalLanguages>{Object.keys(languages).length} total languages used</TotalLanguages>
-      <PieChart data={dataForPieChart(languages)} />
-      <LanguagesTable data={structure} />
+      <DataRow>
+        <PieChart data={dataForPieChart(languages)} />
+        <LanguagesTable data={structure} />
+      </DataRow>
     </>
   );
 };

@@ -7,10 +7,10 @@ const PieChart = ({ data }) => {
     <VictoryPie
       data={data}
       colorScale="cool"
-      height={200}
+      height={250}
       style={{
         labels: {
-          fontSize: '8',
+          fontSize: '10',
           fill: colors.whiteColor,
         },
       }}
