@@ -4,10 +4,10 @@ import HamburgerMenuIcon from '../components/sidebar/hamburger-menu-icon.compone
 import Sidebar from '../components/sidebar/sidebar.component';
 import UserInfo from '../components/user-info/user-info.component';
 import RateLimit from '../components/rate-limit/rate-limit.component';
-import Repos from '../components/repos/repos.component';
 import { fetchData, fetchAllLanguages } from '../utils/fetchData';
 import LanguagesPage from './languages-page';
 import FollowersPage from './followers-page';
+import ReposPage from './repos-page';
 
 const UserPage = props => {
   const [error, setIsError] = useState(false);
@@ -106,7 +106,7 @@ const UserPage = props => {
                 setError={() => setIsError(true)}
               />
             )}
-            {userRepos && reposIsPressed && <Repos data={userRepos} />}
+            {userRepos && reposIsPressed && <ReposPage userRepos={userRepos} />}
           </Sidebar>
         </>
       )}
