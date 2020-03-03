@@ -9,6 +9,7 @@ import Followers from '../components/followers/followers.component';
 import Repos from '../components/repos/repos.component';
 import { fetchData, fetchAllLanguages } from '../utils/fetchData';
 import { dataForPieChart } from '../utils/prepareDataForChart';
+import LanguagesPage from './languages-page';
 
 const UserPage = props => {
   const [error, setIsError] = useState(false);
@@ -99,7 +100,7 @@ const UserPage = props => {
           >
             {rateLimit && <RateLimit rateLimit={rateLimit} />}
             {userIsPressed && (userInfo || languages) && <UserInfo userInfo={userInfo} />}
-            {languages && languagesIsPressed && <PieChart data={dataForPieChart(languages)} />}
+            {languagesIsPressed && <LanguagesPage languages={languages} />}
             {followersIsPressed && <Followers user={user} setError={() => setIsError(true)} />}
             {userRepos && reposIsPressed && <Repos data={userRepos} />}
           </Sidebar>

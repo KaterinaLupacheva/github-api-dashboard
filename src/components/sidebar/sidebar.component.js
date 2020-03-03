@@ -11,7 +11,7 @@ const Sidebar = ({
   followersIsPressed,
   reposIsPressed,
   userIsPressed,
-  user
+  user,
 }) => {
   const handleIsPressed = name => {
     if (languagesIsPressed && name === 'Languages') {
