@@ -4,23 +4,47 @@ import SIDEBAR_OPTIONS from './sidebar-options.data';
 
 import './sidebar.styles.scss';
 
-const Sidebar = ({ children, handleClick }) => (
-  <>
-    <div className="sidebar-container">
-      <header>{'Dashboard'}</header>
-      <ul>
-        {SIDEBAR_OPTIONS.map(option => (
-          <SidebarOption
-            key={option.id}
-            icon={option.icon}
-            name={option.name}
-            handleClick={handleClick}
-          />
-        ))}
-      </ul>
-    </div>
-    <section>{children}</section>
-  </>
-);
+const Sidebar = ({
+  children,
+  handleClick,
+  languagesIsPressed,
+  followersIsPressed,
+  reposIsPressed,
+  userIsPressed,
+}) => {
+  const handleIsPressed = name => {
+    if (languagesIsPressed && name === 'Languages') {
+      return true;
+    } else if (userIsPressed && name === 'User') {
+      return true;
+    } else if (followersIsPressed && name === 'Followers') {
+      return true;
+    } else if (reposIsPressed && name === 'Repositories') {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  return (
+    <>
+      <div className="sidebar-container">
+        <header>{'Dashboard'}</header>
+        <ul>
+          {SIDEBAR_OPTIONS.map(option => (
+            <SidebarOption
+              key={option.id}
+              icon={option.icon}
+              name={option.name}
+              handleClick={handleClick}
+              isPressed={handleIsPressed(option.name)}
+            />
+          ))}
+        </ul>
+      </div>
+      <section>{children}</section>
+    </>
+  );
+};
 
 export default Sidebar;

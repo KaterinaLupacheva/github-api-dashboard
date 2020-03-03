@@ -16,6 +16,7 @@ const UserPage = props => {
   const [userRepos, setUserRepos] = useState(null);
   const [languages, setLanguages] = useState(null);
   const [rateLimit, setRateLimit] = useState(null);
+  const [userIsPressed, setUserIsPressed] = useState(true);
   const [languagesIsPressed, setLanguagesIsPressed] = useState(false);
   const [followersIsPressed, setFollowersIsPressed] = useState(false);
   const [reposIsPressed, setReposIsPressed] = useState(false);
@@ -25,35 +26,35 @@ const UserPage = props => {
   const togglePressed = e => {
     switch (e) {
       case 'User':
+        setUserIsPressed(true);
         setLanguagesIsPressed(false);
         setFollowersIsPressed(false);
         setReposIsPressed(false);
         break;
       case 'Languages':
+        setUserIsPressed(false);
         setLanguagesIsPressed(true);
         setFollowersIsPressed(false);
         setReposIsPressed(false);
         break;
       case 'Followers':
+        setUserIsPressed(false);
         setFollowersIsPressed(true);
         setLanguagesIsPressed(false);
         setReposIsPressed(false);
         break;
       case 'Repositories':
+        setUserIsPressed(false);
         setLanguagesIsPressed(false);
         setFollowersIsPressed(false);
         setReposIsPressed(true);
         break;
       default:
+        setUserIsPressed(true);
         setLanguagesIsPressed(false);
         setFollowersIsPressed(false);
         setReposIsPressed(false);
     }
-  };
-
-  const handleClick = e => {
-    console.log(e);
-    togglePressed(e);
   };
 
   useEffect(() => {
@@ -88,18 +89,15 @@ const UserPage = props => {
       ) : (
         <>
           <HamburgerMenuIcon />
-          <Sidebar handleClick={handleClick}>
+          <Sidebar
+            handleClick={togglePressed}
+            languagesIsPressed={languagesIsPressed}
+            followersIsPressed={followersIsPressed}
+            reposIsPressed={reposIsPressed}
+            userIsPressed={userIsPressed}
+          >
             {rateLimit && <RateLimit rateLimit={rateLimit} />}
-            {(userInfo || languages) && (
-              <UserInfo
-                userInfo={userInfo}
-                languages={languages}
-                languagesIsPressed={languagesIsPressed}
-                followersIsPressed={followersIsPressed}
-                reposIsPressed={reposIsPressed}
-                togglePressed={e => togglePressed(e)}
-              />
-            )}
+            {userIsPressed && (userInfo || languages) && <UserInfo userInfo={userInfo} />}
             {languages && languagesIsPressed && <PieChart data={dataForPieChart(languages)} />}
             {followersIsPressed && <Followers user={user} setError={() => setIsError(true)} />}
             {userRepos && reposIsPressed && <Repos data={userRepos} />}

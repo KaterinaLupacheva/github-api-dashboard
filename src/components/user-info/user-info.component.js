@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserInfoContainer, CardButton } from './user-info.styles';
+import { UserInfoContainer } from './user-info.styles';
 import { IconContext } from 'react-icons';
 import { TiBriefcase } from 'react-icons/ti';
 import { MdLocationOn } from 'react-icons/md';
@@ -67,39 +67,6 @@ const UserInfo = ({ userInfo }) => {
           </div>
         )}
       </div>
-
-      {/* <div className="user-info-cards">
-        {languages && (
-          <CardButton
-            className={`${languagesIsPressed ? 'pressed' : ''} card`}
-            value={'lang'}
-            onClick={() => togglePressed('lang')}
-          >
-            <span>{Object.keys(languages).length}</span>
-            <span>Languages Used</span>
-          </CardButton>
-        )}
-        {userInfo.followers && (
-          <CardButton
-            className={`${followersIsPressed ? 'pressed' : ''} card`}
-            value={'fol'}
-            onClick={() => togglePressed('fol')}
-          >
-            <span>{userInfo.followers}</span>
-            <span>Followers</span>
-          </CardButton>
-        )}
-        {userInfo.public_repos && (
-          <CardButton
-            className={`${reposIsPressed ? 'pressed' : ''} card`}
-            value={'repos'}
-            onClick={() => togglePressed('repos')}
-          >
-            <span>{userInfo.public_repos}</span>
-            <span>Repositories</span>
-          </CardButton>
-        )}
-      </div> */}
     </UserInfoContainer>
   );
 };

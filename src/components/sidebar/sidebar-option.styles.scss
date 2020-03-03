@@ -20,4 +20,11 @@
   svg {
     margin-right: 16px;
   }
+
+  &.pressed{
+    background-color: white;
+    padding-left: 50px;
+    font-weight: bold;
+    color: #063146;
+  }
 }
