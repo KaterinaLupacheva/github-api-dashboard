@@ -4,13 +4,18 @@ import SIDEBAR_OPTIONS from './sidebar-options.data';
 
 import './sidebar.styles.scss';
 
-const Sidebar = ({ children }) => (
+const Sidebar = ({ children, handleClick }) => (
   <>
     <div className="sidebar-container">
       <header>{'Dashboard'}</header>
       <ul>
         {SIDEBAR_OPTIONS.map(option => (
-          <SidebarOption key={option.id} icon={option.icon} name={option.name} />
+          <SidebarOption
+            key={option.id}
+            icon={option.icon}
+            name={option.name}
+            handleClick={handleClick}
+          />
         ))}
       </ul>
     </div>

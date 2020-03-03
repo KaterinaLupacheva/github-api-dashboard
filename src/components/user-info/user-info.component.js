@@ -6,14 +6,7 @@ import { MdLocationOn } from 'react-icons/md';
 import { GoLink } from 'react-icons/go';
 import { GoCalendar } from 'react-icons/go';
 
-const UserInfo = ({
-  userInfo,
-  languages,
-  languagesIsPressed,
-  followersIsPressed,
-  reposIsPressed,
-  togglePressed,
-}) => {
+const UserInfo = ({ userInfo }) => {
   return (
     <UserInfoContainer>
       <div className="user-name">{userInfo.name}</div>
@@ -75,7 +68,7 @@ const UserInfo = ({
         )}
       </div>
 
-      <div className="user-info-cards">
+      {/* <div className="user-info-cards">
         {languages && (
           <CardButton
             className={`${languagesIsPressed ? 'pressed' : ''} card`}
@@ -106,7 +99,7 @@ const UserInfo = ({
             <span>Repositories</span>
           </CardButton>
         )}
-      </div>
+      </div> */}
     </UserInfoContainer>
   );
 };
