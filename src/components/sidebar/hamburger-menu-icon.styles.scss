@@ -20,7 +20,7 @@
 
 #cancel {
   z-index: 1111;
-  left: -195px;
+  left: -20vw;
   margin-top: 17px;
   font-size: 30px;
   color: #0a5275;
@@ -39,7 +39,7 @@
 }
 
 #check:checked ~ label #cancel {
-  left: 195px;
+  left: 17vw;
 }
 
 #check:checked ~ section {

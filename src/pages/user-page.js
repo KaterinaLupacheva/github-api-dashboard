@@ -95,6 +95,7 @@ const UserPage = props => {
             followersIsPressed={followersIsPressed}
             reposIsPressed={reposIsPressed}
             userIsPressed={userIsPressed}
+            user={user}
           >
             {rateLimit && <RateLimit rateLimit={rateLimit} />}
             {userIsPressed && (userInfo || languages) && <UserInfo userInfo={userInfo} />}

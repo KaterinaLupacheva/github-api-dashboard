@@ -11,6 +11,7 @@ const Sidebar = ({
   followersIsPressed,
   reposIsPressed,
   userIsPressed,
+  user
 }) => {
   const handleIsPressed = name => {
     if (languagesIsPressed && name === 'Languages') {
@@ -29,7 +30,7 @@ const Sidebar = ({
   return (
     <>
       <div className="sidebar-container">
-        <header>{'Dashboard'}</header>
+        <header>{user}</header>
         <ul>
           {SIDEBAR_OPTIONS.map(option => (
             <SidebarOption

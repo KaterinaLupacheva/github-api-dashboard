@@ -1,7 +1,7 @@
 .sidebar-container {
   position: fixed;
-  left: -250px;
-  width: 250px;
+  left: -20vw;
+  width: 20vw;
   height: 100%;
   background: #042331;
   transition: all 0.5s ease;
@@ -14,8 +14,12 @@
   }
 
   header {
-    font-size: 22px;
-    color: white;
+    white-space: nowrap; 
+    width: 20vw; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    font-size: 2vw;
+    color: #F0810F;
     text-align: center;
     line-height: 70px;
     background: #063146;
