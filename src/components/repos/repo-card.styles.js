@@ -3,6 +3,9 @@ import { colors, fontSizes } from '../../global.styles';
 
 export const RepoCardContainer = styled.div`
   width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   color: ${colors.whiteColor};
   background: ${colors.backgroundLightDark};
   border: 1px solid ${colors.secondaryColor};
