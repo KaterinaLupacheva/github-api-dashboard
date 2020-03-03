@@ -5,7 +5,7 @@ import './hamburger-menu-icon.styles.scss';
 
 const HamburgerMenuIcon = () => (
   <>
-    <input type="checkbox" id="check" />
+    <input type="checkbox" id="check" defaultChecked />
     <label htmlFor="check">
       <GoThreeBars id="btn" />
       <GoX id="cancel" />
