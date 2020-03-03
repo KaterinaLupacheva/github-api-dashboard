@@ -106,7 +106,9 @@ const UserPage = props => {
                 setError={() => setIsError(true)}
               />
             )}
-            {userRepos && reposIsPressed && <ReposPage userRepos={userRepos} />}
+            {userRepos && reposIsPressed && (
+              <ReposPage userRepos={userRepos} reposNum={userInfo.public_repos} />
+            )}
           </Sidebar>
         </>
       )}
