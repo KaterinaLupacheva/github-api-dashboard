@@ -4,12 +4,10 @@ import HamburgerMenuIcon from '../components/sidebar/hamburger-menu-icon.compone
 import Sidebar from '../components/sidebar/sidebar.component';
 import UserInfo from '../components/user-info/user-info.component';
 import RateLimit from '../components/rate-limit/rate-limit.component';
-import PieChart from '../components/charts/pie-chart.component';
-import Followers from '../components/followers/followers.component';
 import Repos from '../components/repos/repos.component';
 import { fetchData, fetchAllLanguages } from '../utils/fetchData';
-import { dataForPieChart } from '../utils/prepareDataForChart';
 import LanguagesPage from './languages-page';
+import FollowersPage from './followers-page';
 
 const UserPage = props => {
   const [error, setIsError] = useState(false);
@@ -101,7 +99,13 @@ const UserPage = props => {
             {rateLimit && <RateLimit rateLimit={rateLimit} />}
             {userIsPressed && (userInfo || languages) && <UserInfo userInfo={userInfo} />}
             {languages && languagesIsPressed && <LanguagesPage languages={languages} />}
-            {followersIsPressed && <Followers user={user} setError={() => setIsError(true)} />}
+            {followersIsPressed && (
+              <FollowersPage
+                user={user}
+                followersNum={userInfo.followers}
+                setError={() => setIsError(true)}
+              />
+            )}
             {userRepos && reposIsPressed && <Repos data={userRepos} />}
           </Sidebar>
         </>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import FollowerInfo from './follower-info.component';
 import { fetchData } from '../../utils/fetchData';
-import { FollowersContainer } from './followers.styles';
 
 const Followers = ({ user, setError }) => {
   const [followers, setFollowers] = useState(null);
@@ -20,10 +19,15 @@ const Followers = ({ user, setError }) => {
   }, [user]);
 
   return (
-    <FollowersContainer>
-      <div className="title">{'followers'}</div>
-      {followers && followers.map(f => <FollowerInfo follower={f} key={f.id} />)}
-    </FollowersContainer>
+    <>
+      {followers && (
+        <>
+          {followers.map(f => (
+            <FollowerInfo follower={f} key={f.id} />
+          ))}
+        </>
+      )}
+    </>
   );
 };
 

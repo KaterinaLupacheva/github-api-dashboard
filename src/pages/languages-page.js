@@ -20,7 +20,7 @@ const LanguagesPage = ({ languages }) => {
     };
 
     languagesStructure(languages);
-  }, []);
+  }, [languages]);
 
   return (
     <>

@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import { colors, fontSizes } from '../global.styles';
 
 export const TotalLanguages = styled.div`
-  padding: 10vh 0 5vh 0;
+  padding: 5vh 0;
   color: ${colors.textColor};
   font-size: ${fontSizes.medium};
+  font-weight: bold;
+  text-transform: uppercase;
 `;
 
 export const DataRow = styled.div`
