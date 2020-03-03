@@ -1,0 +1,32 @@
+.sidebar-container {
+  position: fixed;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: #042331;
+  transition: all 0.5s ease;
+
+  & ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+  }
+
+  header {
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    line-height: 70px;
+    background: #063146;
+    user-select: none;
+  }
+}
+
+section {
+  // background: url(../../assets/bg3.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: all 0.5s;
+  height: 85%;
+}

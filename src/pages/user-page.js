@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import HamburgerMenuIcon from '../components/sidebar/hamburger-menu-icon.component';
+import Sidebar from '../components/sidebar/sidebar.component';
 import UserInfo from '../components/user-info/user-info.component';
 import RateLimit from '../components/rate-limit/rate-limit.component';
 import PieChart from '../components/charts/pie-chart.component';
@@ -75,20 +77,23 @@ const UserPage = props => {
         <div>{'ERROR'}</div>
       ) : (
         <>
-          {rateLimit && <RateLimit rateLimit={rateLimit} />}
-          {(userInfo || languages) && (
-            <UserInfo
-              userInfo={userInfo}
-              languages={languages}
-              languagesIsPressed={languagesIsPressed}
-              followersIsPressed={followersIsPressed}
-              reposIsPressed={reposIsPressed}
-              togglePressed={e => togglePressed(e)}
-            />
-          )}
-          {languages && languagesIsPressed && <PieChart data={dataForPieChart(languages)} />}
-          {followersIsPressed && <Followers user={user} setError={() => setIsError(true)} />}
-          {userRepos && reposIsPressed && <Repos data={userRepos} />}
+          <HamburgerMenuIcon />
+          <Sidebar>
+            {rateLimit && <RateLimit rateLimit={rateLimit} />}
+            {(userInfo || languages) && (
+              <UserInfo
+                userInfo={userInfo}
+                languages={languages}
+                languagesIsPressed={languagesIsPressed}
+                followersIsPressed={followersIsPressed}
+                reposIsPressed={reposIsPressed}
+                togglePressed={e => togglePressed(e)}
+              />
+            )}
+            {languages && languagesIsPressed && <PieChart data={dataForPieChart(languages)} />}
+            {followersIsPressed && <Followers user={user} setError={() => setIsError(true)} />}
+            {userRepos && reposIsPressed && <Repos data={userRepos} />}
+          </Sidebar>
         </>
       )}
     </div>

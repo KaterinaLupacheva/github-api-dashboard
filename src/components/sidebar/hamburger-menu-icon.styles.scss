@@ -1,0 +1,47 @@
+#check {
+  display: none;
+}
+
+#btn,
+#cancel {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+#btn {
+  left: 10px;
+  margin-top: 25px;
+  font-size: 35px;
+  color: darkblue;
+  padding: 6px 12px;
+  transition: all 0.5s;
+}
+
+#cancel {
+  z-index: 1111;
+  left: -195px;
+  margin-top: 17px;
+  font-size: 30px;
+  color: #0a5275;
+  padding: 4px 9px;
+  transition: all 0.5s ease;
+}
+
+#check:checked ~ .sidebar-container {
+  left: 0;
+}
+
+#check:checked ~ label #btn {
+  left: 250px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#check:checked ~ label #cancel {
+  left: 195px;
+}
+
+#check:checked ~ section {
+  margin-left: 250px;
+}
