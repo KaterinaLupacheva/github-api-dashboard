@@ -14,6 +14,7 @@ export const UserInfoContainer = styled.div`
   }
 
   .bio {
+    padding: 5vh 0;
     color: ${colors.whiteColor};
     font-size: ${fontSizes.small};
   }
