@@ -35,10 +35,14 @@ const ReposPage = props => {
     setRepocardIsOpened(true);
   };
 
+  const goBack = () => {
+    setRepocardIsOpened(false);
+  };
+
   return (
     <>
       {repoCardIsOpened ? (
-        <RepoCardDetails />
+        <RepoCardDetails goBack={goBack} />
       ) : (
         <>
           <ReposTitle>{props.reposNum.toLocaleString()} total repositories</ReposTitle>
