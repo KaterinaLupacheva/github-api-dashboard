@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Repos from '../components/repos/repos.component';
-import { ReposTitle, Hidden, DropDown } from './repos-page.styles';
+import { ReposTitle, DropDown } from './repos-page.styles';
 
 const ReposPage = ({ userRepos, reposNum }) => {
   const [data, setData] = useState([]);
   const [sortType, setSortType] = useState('stars');
-  const [test, setTest] = useState('Test');
 
   useEffect(() => {
     const sortRepos = type => {
@@ -17,12 +16,11 @@ const ReposPage = ({ userRepos, reposNum }) => {
       const sortProperty = types[type];
       if (type === 'upd') {
         setData(
-          userRepos.sort((a, b) => Date.parse(b[sortProperty]) - Date.parse(a[sortProperty]))
+          [...userRepos].sort((a, b) => Date.parse(b[sortProperty]) - Date.parse(a[sortProperty]))
         );
       } else {
-        setData(userRepos.sort((a, b) => b[sortProperty] - a[sortProperty]));
+        setData([...userRepos].sort((a, b) => b[sortProperty] - a[sortProperty]));
       }
-      setTest(type);
     };
 
     sortRepos(sortType);
@@ -40,7 +38,6 @@ const ReposPage = ({ userRepos, reposNum }) => {
         </select>
       </DropDown>
       {data && <Repos data={data} />}
-      <Hidden>{test}</Hidden>
     </>
   );
 };

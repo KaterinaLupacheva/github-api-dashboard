@@ -35,7 +35,3 @@ export const DropDown = styled.span`
     -webkit-appearance: button;
   }
 `;
-
-export const Hidden = styled.div`
-  color: ${colors.backgroundDark};
-`;
