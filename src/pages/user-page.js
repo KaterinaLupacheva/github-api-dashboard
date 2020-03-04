@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import HamburgerMenuIcon from '../components/sidebar/hamburger-menu-icon.component';
 import Sidebar from '../components/sidebar/sidebar.component';
@@ -9,6 +10,7 @@ import { fetchData, fetchAllLanguages } from '../utils/fetchData';
 import LanguagesPage from './languages-page';
 import FollowersPage from './followers-page';
 import ReposPage from './repos-page';
+import { Header } from './user-page.styles';
 
 const UserPage = props => {
   const [error, setIsError] = useState({ active: false, type: 200 });
@@ -97,7 +99,12 @@ const UserPage = props => {
             userIsPressed={userIsPressed}
             user={user}
           >
-            {rateLimit && <RateLimit rateLimit={rateLimit} />}
+            <Header>
+              <Link to="/" className="home">
+                Home
+              </Link>
+              {rateLimit && <RateLimit rateLimit={rateLimit} />}
+            </Header>
             {userIsPressed && (userInfo || languages) && <UserInfo userInfo={userInfo} />}
             {languages && languagesIsPressed && <LanguagesPage languages={languages} />}
             {followersIsPressed && (
