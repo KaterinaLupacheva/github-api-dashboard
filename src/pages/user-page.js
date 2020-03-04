@@ -69,7 +69,7 @@ const UserPage = props => {
         const userInfo = await fetchData(`https://api.github.com/users/${user}`);
         setUserInfo(userInfo);
         //fetch user's repos
-        const repos = await fetchData(`https://api.github.com/users/${user}/repos`);
+        const repos = await fetchData(`https://api.github.com/users/${user}/repos?per_page=100`);
         setUserRepos(repos);
         //fetch languages of all repos
         const lan = await fetchAllLanguages(repos, user);
