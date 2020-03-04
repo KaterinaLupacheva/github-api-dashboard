@@ -9,9 +9,9 @@ import { IoIosGlobe } from 'react-icons/io';
 import { GoLaw } from 'react-icons/go';
 import { GoClock } from 'react-icons/go';
 
-const RepoCard = ({ repo }) => {
+const RepoCard = ({ repo, openRepoCardPage }) => {
   return (
-    <RepoCardContainer>
+    <RepoCardContainer onClick={() => openRepoCardPage(repo.name)}>
       {repo.fork && (
         <RibbonContainer>
           <span>Forked</span>

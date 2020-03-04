@@ -2,11 +2,11 @@ import React from 'react';
 import RepoCard from './repo-card.component';
 import { ReposContainer } from './repos.styles';
 
-const Repos = ({ data }) => {
+const Repos = props => {
   return (
     <ReposContainer>
-      {data.map(repo => (
-        <RepoCard repo={repo} key={repo.id} />
+      {props.data.map(repo => (
+        <RepoCard repo={repo} key={repo.id} {...props} />
       ))}
     </ReposContainer>
   );
