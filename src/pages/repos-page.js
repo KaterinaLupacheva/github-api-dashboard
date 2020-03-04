@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Repos from '../components/repos/repos.component';
+import RepoCardDetails from '../components/repo-card-details/repo-card-details.component';
 import { ReposTitle, DropDown } from './repos-page.styles';
 
 const ReposPage = props => {
@@ -37,7 +38,7 @@ const ReposPage = props => {
   return (
     <>
       {repoCardIsOpened ? (
-        <div>BACK ARROW + CARD</div>
+        <RepoCardDetails />
       ) : (
         <>
           <ReposTitle>{props.reposNum.toLocaleString()} total repositories</ReposTitle>
