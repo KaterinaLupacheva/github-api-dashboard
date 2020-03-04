@@ -1,19 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Repos from '../components/repos/repos.component';
-import styled from 'styled-components';
-import { colors, fontSizes } from '../global.styles';
-
-const ReposTitle = styled.div`
-  color: ${colors.textColor};
-  font-size: ${fontSizes.medium};
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 5vh 0;
-`;
-
-const Hidden = styled.div`
-  color: ${colors.backgroundDark};
-`;
+import { ReposTitle, Hidden, DropDown } from './repos-page.styles';
 
 const ReposPage = ({ userRepos, reposNum }) => {
   const [data, setData] = useState([]);
@@ -44,12 +31,14 @@ const ReposPage = ({ userRepos, reposNum }) => {
   return (
     <>
       <ReposTitle>{reposNum.toLocaleString()} total repositories</ReposTitle>
-
-      <select onChange={e => setSortType(e.target.value)}>
-        <option value="stars">Stars</option>
-        <option value="forks">Forks</option>
-        <option value="upd">Updated</option>
-      </select>
+      <DropDown>
+        <span className="sorted">{'Sort by '}</span>
+        <select onChange={e => setSortType(e.target.value)}>
+          <option value="stars">Stars</option>
+          <option value="forks">Forks</option>
+          <option value="upd">Updated</option>
+        </select>
+      </DropDown>
       {data && <Repos data={data} />}
       <Hidden>{test}</Hidden>
     </>
