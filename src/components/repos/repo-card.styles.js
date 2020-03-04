@@ -12,6 +12,12 @@ export const RepoCardContainer = styled.div`
   padding: 2vmin;
   margin: 2vmin;
   position: relative;
+  cursor: pointer;
+  transition: all 0.4s ease;
+
+  &:hover {
+    background: ${colors.backgroundDark};
+  }
 
   .name {
     color: ${colors.textColor};

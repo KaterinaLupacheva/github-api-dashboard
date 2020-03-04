@@ -4,13 +4,14 @@ import HamburgerMenuIcon from '../components/sidebar/hamburger-menu-icon.compone
 import Sidebar from '../components/sidebar/sidebar.component';
 import UserInfo from '../components/user-info/user-info.component';
 import RateLimit from '../components/rate-limit/rate-limit.component';
+import Error from '../components/error/error.component';
 import { fetchData, fetchAllLanguages } from '../utils/fetchData';
 import LanguagesPage from './languages-page';
 import FollowersPage from './followers-page';
 import ReposPage from './repos-page';
 
 const UserPage = props => {
-  const [error, setIsError] = useState(false);
+  const [error, setIsError] = useState({ active: false, type: 200 });
   const [userInfo, setUserInfo] = useState(null);
   const [userRepos, setUserRepos] = useState(null);
   const [languages, setLanguages] = useState(null);
@@ -63,7 +64,7 @@ const UserPage = props => {
         const rateLimit = await fetchData(`https://api.github.com/rate_limit`);
         setRateLimit(rateLimit.resources.core);
         if (rateLimit.resources.core.remaining < 1) {
-          setIsError(true);
+          setIsError({ active: true, status: 403 });
         }
         //fetch user info
         const userInfo = await fetchData(`https://api.github.com/users/${user}`);
@@ -75,7 +76,7 @@ const UserPage = props => {
         const lan = await fetchAllLanguages(repos, user);
         setLanguages(lan);
       } catch (error) {
-        setIsError(true);
+        setIsError({ active: true, status: 404 });
       }
     };
     getData();
@@ -83,8 +84,8 @@ const UserPage = props => {
 
   return (
     <div>
-      {error ? (
-        <div>{'ERROR'}</div>
+      {error && error.active ? (
+        <Error error={error} />
       ) : (
         <>
           <HamburgerMenuIcon />
