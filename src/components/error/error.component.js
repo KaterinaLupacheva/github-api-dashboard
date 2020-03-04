@@ -3,7 +3,6 @@ import { ErrorPageContainer } from './error.styles';
 import { Link } from 'react-router-dom';
 
 const Error = ({ error }) => {
-  console.log(error);
   return (
     <ErrorPageContainer>
       <Link to="/" className="home">

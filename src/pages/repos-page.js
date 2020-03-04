@@ -24,7 +24,7 @@ const ReposPage = ({ userRepos, reposNum }) => {
     };
 
     sortRepos(sortType);
-  }, [sortType]);
+  }, [sortType, userRepos]);
 
   return (
     <>

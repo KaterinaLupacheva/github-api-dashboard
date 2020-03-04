@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, fontSizes } from '../global.styles';
+import { fontSizes } from '../global.styles';
 
 export const Header = styled.div`
   display: flex;
