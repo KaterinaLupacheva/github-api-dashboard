@@ -1,3 +1,5 @@
+import { FaCommentsDollar } from 'react-icons/fa';
+
 export const dataForPieChart = data => {
   const result = [];
   const totalSum = Object.values(data).reduce((a, b) => a + b, 0);
@@ -15,15 +17,22 @@ export const dataForPieChart = data => {
 
 export const dataForLineChart = data => {
   const result = [];
-  data.forEach(week => {
-    result.push({
-      x: new Date(week.week * 1000).toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-      }),
-      y: week.total,
-    });
+  data.forEach((week, i) => {
+    if (i % 10 === 0) {
+      result.push({
+        x: new Date(week.week * 1000).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: '2-digit',
+        }),
+        y: week.total,
+      });
+    } else {
+      result.push({
+        x: '',
+        y: week.total,
+      });
+    }
   });
   return result;
 };
