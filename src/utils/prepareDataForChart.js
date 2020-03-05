@@ -12,3 +12,18 @@ export const dataForPieChart = data => {
   result.push({ x: 'other', y: other });
   return result;
 };
+
+export const dataForLineChart = data => {
+  const result = [];
+  data.forEach(week => {
+    result.push({
+      x: new Date(week.week * 1000).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      }),
+      y: week.total,
+    });
+  });
+  return result;
+};

@@ -115,7 +115,7 @@ const UserPage = props => {
               />
             )}
             {userRepos && reposIsPressed && (
-              <ReposPage userRepos={userRepos} reposNum={userInfo.public_repos} />
+              <ReposPage userRepos={userRepos} reposNum={userInfo.public_repos} user={user} />
             )}
           </Sidebar>
         </>
