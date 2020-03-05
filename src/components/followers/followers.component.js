@@ -8,7 +8,7 @@ const Followers = ({ user, setError }) => {
   useEffect(() => {
     const getFollowers = async () => {
       try {
-        const result = await fetchData(`https://api.github.com/users/${user}/followers`);
+        const result = await fetchData(`https://api.github.com/users/${user}/followers`, setError);
         setFollowers(result);
       } catch (error) {
         setError();

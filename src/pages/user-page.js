@@ -63,16 +63,19 @@ const UserPage = props => {
     const getData = async () => {
       try {
         //fetch number of requests left
-        const rateLimit = await fetchData(`https://api.github.com/rate_limit`);
+        const rateLimit = await fetchData(`https://api.github.com/rate_limit`, setIsError);
         setRateLimit(rateLimit.resources.core);
         if (rateLimit.resources.core.remaining < 1) {
           setIsError({ active: true, status: 403 });
         }
         //fetch user info
-        const userInfo = await fetchData(`https://api.github.com/users/${user}`);
+        const userInfo = await fetchData(`https://api.github.com/users/${user}`, setIsError);
         setUserInfo(userInfo);
         //fetch user's repos
-        const repos = await fetchData(`https://api.github.com/users/${user}/repos?per_page=100`);
+        const repos = await fetchData(
+          `https://api.github.com/users/${user}/repos?per_page=100`,
+          setIsError
+        );
         setUserRepos(repos);
         //fetch languages of all repos
         const lan = await fetchAllLanguages(repos, user);

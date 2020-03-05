@@ -36,7 +36,8 @@ const ReposPage = props => {
     setRepocardIsOpened(true);
     try {
       const yearCommits = await fetchData(
-        `https://api.github.com/repos/${props.user}/${repoName}/stats/commit_activity`
+        `https://api.github.com/repos/${props.user}/${repoName}/stats/commit_activity`,
+        props.setError
       );
       setCommits(yearCommits);
     } catch (error) {

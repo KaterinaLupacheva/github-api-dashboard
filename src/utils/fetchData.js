@@ -1,7 +1,12 @@
 let languages = {};
 
-export const fetchData = async url => {
+export const fetchData = async (url, setIsError) => {
   const result = await fetch(url);
+  if (result.status === 403) {
+    return setIsError({ active: true, status: 403 });
+  } else if (result.status === 404) {
+    return setIsError({ active: true, status: 404 });
+  }
   return await result.json();
 };
 
