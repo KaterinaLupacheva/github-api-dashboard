@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors, fontSizes } from '../../global.styles';
 
 export const RepoCardDetailsContainer = styled.div`
   .arrow-icon {

@@ -1,5 +1,3 @@
-import { FaCommentsDollar } from 'react-icons/fa';
-
 export const dataForPieChart = data => {
   const result = [];
   const totalSum = Object.values(data).reduce((a, b) => a + b, 0);
