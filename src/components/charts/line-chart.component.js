@@ -31,6 +31,23 @@ const LineChart = ({ data }) => {
           data: { stroke: '#c43a31' },
         }}
       />
+      <VictoryAxis
+        label="Weeks"
+        style={{
+          axis: { stroke: `${colors.secondaryColor}` },
+          axisLabel: { fontSize: 20, padding: 30, stroke: `${colors.textColor}` },
+          tickLabels: { stroke: `${colors.whiteColor}` },
+        }}
+      />
+      <VictoryAxis
+        dependentAxis
+        label="Commits"
+        style={{
+          axis: { stroke: `${colors.secondaryColor}` },
+          axisLabel: { fontSize: 20, padding: 30, stroke: `${colors.textColor}` },
+          tickLabels: { stroke: `${colors.whiteColor}` },
+        }}
+      />
     </VictoryChart>
   );
 };

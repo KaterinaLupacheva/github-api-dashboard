@@ -111,11 +111,16 @@ const UserPage = props => {
               <FollowersPage
                 user={user}
                 followersNum={userInfo.followers}
-                setError={() => setIsError(true)}
+                setError={() => setIsError({ active: true, status: 404 })}
               />
             )}
             {userRepos && reposIsPressed && (
-              <ReposPage userRepos={userRepos} reposNum={userInfo.public_repos} user={user} />
+              <ReposPage
+                userRepos={userRepos}
+                reposNum={userInfo.public_repos}
+                user={user}
+                setError={() => setIsError({ active: true, status: 404 })}
+              />
             )}
           </Sidebar>
         </>

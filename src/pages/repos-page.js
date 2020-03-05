@@ -34,10 +34,14 @@ const ReposPage = props => {
 
   const handleOpenRepoCard = async repoName => {
     setRepocardIsOpened(true);
-    const yearCommits = await fetchData(
-      `https://api.github.com/repos/${props.user}/${repoName}/stats/commit_activity`
-    );
-    setCommits(yearCommits);
+    try {
+      const yearCommits = await fetchData(
+        `https://api.github.com/repos/${props.user}/${repoName}/stats/commit_activity`
+      );
+      setCommits(yearCommits);
+    } catch (error) {
+      props.setError();
+    }
   };
 
   const goBack = () => {
