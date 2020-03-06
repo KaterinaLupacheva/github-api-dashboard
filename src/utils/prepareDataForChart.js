@@ -37,7 +37,14 @@ export const dataForLineChart = data => {
 
 export const dataForStackChart = data => {
   const result = [];
-  data.all.forEach((com, i) => result.push({ x: i + 1, y: com }));
-  console.log(result);
+  const owner = [];
+  const contributors = [];
+  data.owner.forEach((a, i) => owner.push({ x: i + 1, y: a }));
+  data.all.forEach((a, i) => {
+    const ownerCommits = owner.find(el => el.x === i + 1).y;
+    contributors.push({ x: i + 1, y: a - ownerCommits });
+  });
+  result.push(owner);
+  result.push(contributors);
   return result;
 };

@@ -9,7 +9,7 @@ const ReposPage = props => {
   const [sortType, setSortType] = useState('stars');
   const [repoCardIsOpened, setRepocardIsOpened] = useState(false);
   const [commits, setCommits] = useState([]);
-  const [commitsWithContributors, setCommitsWithContributors] = useState({});
+  const [commitsWithContributors, setCommitsWithContributors] = useState(null);
 
   useEffect(() => {
     const sortRepos = type => {
@@ -29,7 +29,6 @@ const ReposPage = props => {
         setData([...props.userRepos].sort((a, b) => b[sortProperty] - a[sortProperty]));
       }
     };
-
     sortRepos(sortType);
   }, [sortType, props.userRepos]);
 
@@ -54,11 +53,12 @@ const ReposPage = props => {
   const goBack = () => {
     setRepocardIsOpened(false);
     setCommits([]);
+    setCommitsWithContributors({});
   };
 
   return (
     <>
-      {repoCardIsOpened && commits.length > 0 ? (
+      {repoCardIsOpened && commits.length > 0 && commitsWithContributors ? (
         <RepoCardDetails
           goBack={goBack}
           commits={commits}
