@@ -34,3 +34,10 @@ export const dataForLineChart = data => {
   });
   return result;
 };
+
+export const dataForStackChart = data => {
+  const result = [];
+  data.all.forEach((com, i) => result.push({ x: i + 1, y: com }));
+  console.log(result);
+  return result;
+};

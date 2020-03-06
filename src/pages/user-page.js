@@ -6,7 +6,7 @@ import Sidebar from '../components/sidebar/sidebar.component';
 import UserInfo from '../components/user-info/user-info.component';
 import RateLimit from '../components/rate-limit/rate-limit.component';
 import Error from '../components/error/error.component';
-import { fetchData, fetchAllLanguages } from '../utils/fetchData';
+import { fetchData } from '../utils/fetchData';
 import LanguagesPage from './languages-page';
 import ReposPage from './repos-page';
 import { Header } from './user-page.styles';
@@ -15,7 +15,6 @@ const UserPage = props => {
   const [error, setIsError] = useState({ active: false, type: 200 });
   const [userInfo, setUserInfo] = useState(null);
   const [userRepos, setUserRepos] = useState(null);
-  const [languages, setLanguages] = useState(null);
   const [rateLimit, setRateLimit] = useState(null);
   const [userIsPressed, setUserIsPressed] = useState(true);
   const [languagesIsPressed, setLanguagesIsPressed] = useState(false);
@@ -65,9 +64,6 @@ const UserPage = props => {
           setIsError
         );
         setUserRepos(repos);
-        //fetch languages of all repos
-        const lan = await fetchAllLanguages(repos, user);
-        setLanguages(lan);
       } catch (error) {
         setIsError({ active: true, status: 404 });
       }
@@ -96,9 +92,9 @@ const UserPage = props => {
               {rateLimit && <RateLimit rateLimit={rateLimit} />}
             </Header>
 
-            {userIsPressed && (userInfo || languages) && <UserInfo userInfo={userInfo} />}
+            {userIsPressed && userInfo && <UserInfo userInfo={userInfo} />}
 
-            {languages && languagesIsPressed && <LanguagesPage languages={languages} />}
+            {languagesIsPressed && <LanguagesPage user={user} repos={userRepos} />}
 
             {userRepos && reposIsPressed && (
               <ReposPage

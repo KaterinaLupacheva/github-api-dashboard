@@ -9,6 +9,7 @@ const ReposPage = props => {
   const [sortType, setSortType] = useState('stars');
   const [repoCardIsOpened, setRepocardIsOpened] = useState(false);
   const [commits, setCommits] = useState([]);
+  const [commitsWithContributors, setCommitsWithContributors] = useState({});
 
   useEffect(() => {
     const sortRepos = type => {
@@ -40,6 +41,11 @@ const ReposPage = props => {
         props.setError
       );
       setCommits(yearCommits);
+      const commitsParticipation = await fetchData(
+        `https://api.github.com/repos/${props.user}/${repoName}/stats/participation`,
+        props.setError
+      );
+      setCommitsWithContributors(commitsParticipation);
     } catch (error) {
       props.setError();
     }
@@ -53,7 +59,11 @@ const ReposPage = props => {
   return (
     <>
       {repoCardIsOpened && commits.length > 0 ? (
-        <RepoCardDetails goBack={goBack} commits={commits} />
+        <RepoCardDetails
+          goBack={goBack}
+          commits={commits}
+          commitsWithContributors={commitsWithContributors}
+        />
       ) : (
         <>
           <ReposTitle>{props.reposNum.toLocaleString()} total repositories</ReposTitle>

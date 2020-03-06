@@ -4,8 +4,10 @@ import { IconContext } from 'react-icons';
 import { RepoCardDetailsContainer } from './repo-card-details.styles';
 import LineChart from '../charts/line-chart.component';
 import { dataForLineChart } from '../../utils/prepareDataForChart';
+import StackChart from '../charts/stack-chart.component';
+import { dataForStackChart } from '../../utils/prepareDataForChart';
 
-const RepoCardDetails = ({ goBack, commits }) => {
+const RepoCardDetails = ({ goBack, commits, commitsWithContributors }) => {
   return (
     <RepoCardDetailsContainer>
       <div className="arrow-icon" onClick={goBack}>
@@ -14,6 +16,9 @@ const RepoCardDetails = ({ goBack, commits }) => {
         </IconContext.Provider>
       </div>
       {commits.length > 0 && <LineChart data={dataForLineChart(commits)} />}
+      {commitsWithContributors.length > 0 && (
+        <StackChart data={dataForStackChart(commitsWithContributors)} />
+      )}
     </RepoCardDetailsContainer>
   );
 };
