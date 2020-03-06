@@ -6,6 +6,7 @@ import {
   VictoryLabel,
   VictoryAxis,
   VictoryArea,
+  VictoryLegend,
 } from 'victory';
 import { colors } from '../../global.styles';
 
@@ -25,7 +26,24 @@ const StackChart = ({ data }) => {
         x={225}
         y={30}
         textAnchor="middle"
-        style={{ fill: 'white', fontSize: '20px' }}
+        style={{ fill: `${colors.whiteColor}`, fontSize: '20px' }}
+      />
+      <VictoryLegend
+        x={125}
+        y={50}
+        title="Legend"
+        centerTitle
+        orientation="horizontal"
+        gutter={20}
+        style={{
+          border: { stroke: `${colors.secondaryColor}` },
+          title: { fontSize: 20, fill: `${colors.whiteColor}` },
+          labels: { fill: `${colors.whiteColor}` },
+        }}
+        data={[
+          { name: 'By owner', symbol: { fill: `${colors.textColor}` } },
+          { name: 'By contributors', symbol: { fill: `${colors.backgroundLightDark}` } },
+        ]}
       />
       <VictoryStack
         animate={{
@@ -34,8 +52,18 @@ const StackChart = ({ data }) => {
         }}
         colorScale="warm"
       >
-        <VictoryArea data={data[0]} />
-        <VictoryArea data={data[1]} />
+        <VictoryArea
+          data={data[0]}
+          style={{
+            data: { fill: `${colors.textColor}` },
+          }}
+        />
+        <VictoryArea
+          data={data[1]}
+          style={{
+            data: { fill: `${colors.backgroundLightDark}` },
+          }}
+        />
       </VictoryStack>
       <VictoryAxis
         tickFormat={tick => ''}
