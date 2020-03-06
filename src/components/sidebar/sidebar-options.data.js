@@ -3,7 +3,6 @@ import React from 'react';
 import { GoPerson } from 'react-icons/go';
 import { GoBook } from 'react-icons/go';
 import { GoRepo } from 'react-icons/go';
-import { GiShadowFollower } from 'react-icons/gi';
 
 const SIDEBAR_OPTIONS = [
   {
@@ -20,11 +19,6 @@ const SIDEBAR_OPTIONS = [
     id: 3,
     icon: <GoRepo />,
     name: 'Repositories',
-  },
-  {
-    id: 4,
-    icon: <GiShadowFollower />,
-    name: 'Followers',
   },
 ];
 

@@ -8,7 +8,6 @@ const Sidebar = ({
   children,
   handleClick,
   languagesIsPressed,
-  followersIsPressed,
   reposIsPressed,
   userIsPressed,
   user,
@@ -17,8 +16,6 @@ const Sidebar = ({
     if (languagesIsPressed && name === 'Languages') {
       return true;
     } else if (userIsPressed && name === 'User') {
-      return true;
-    } else if (followersIsPressed && name === 'Followers') {
       return true;
     } else if (reposIsPressed && name === 'Repositories') {
       return true;

@@ -8,7 +8,6 @@ import RateLimit from '../components/rate-limit/rate-limit.component';
 import Error from '../components/error/error.component';
 import { fetchData, fetchAllLanguages } from '../utils/fetchData';
 import LanguagesPage from './languages-page';
-import FollowersPage from './followers-page';
 import ReposPage from './repos-page';
 import { Header } from './user-page.styles';
 
@@ -20,7 +19,6 @@ const UserPage = props => {
   const [rateLimit, setRateLimit] = useState(null);
   const [userIsPressed, setUserIsPressed] = useState(true);
   const [languagesIsPressed, setLanguagesIsPressed] = useState(false);
-  const [followersIsPressed, setFollowersIsPressed] = useState(false);
   const [reposIsPressed, setReposIsPressed] = useState(false);
   const location = useLocation();
   const user = location.state.user;
@@ -30,31 +28,21 @@ const UserPage = props => {
       case 'User':
         setUserIsPressed(true);
         setLanguagesIsPressed(false);
-        setFollowersIsPressed(false);
         setReposIsPressed(false);
         break;
       case 'Languages':
         setUserIsPressed(false);
         setLanguagesIsPressed(true);
-        setFollowersIsPressed(false);
-        setReposIsPressed(false);
-        break;
-      case 'Followers':
-        setUserIsPressed(false);
-        setFollowersIsPressed(true);
-        setLanguagesIsPressed(false);
         setReposIsPressed(false);
         break;
       case 'Repositories':
         setUserIsPressed(false);
         setLanguagesIsPressed(false);
-        setFollowersIsPressed(false);
         setReposIsPressed(true);
         break;
       default:
         setUserIsPressed(true);
         setLanguagesIsPressed(false);
-        setFollowersIsPressed(false);
         setReposIsPressed(false);
     }
   };
@@ -97,7 +85,6 @@ const UserPage = props => {
           <Sidebar
             handleClick={togglePressed}
             languagesIsPressed={languagesIsPressed}
-            followersIsPressed={followersIsPressed}
             reposIsPressed={reposIsPressed}
             userIsPressed={userIsPressed}
             user={user}
@@ -108,15 +95,11 @@ const UserPage = props => {
               </Link>
               {rateLimit && <RateLimit rateLimit={rateLimit} />}
             </Header>
+
             {userIsPressed && (userInfo || languages) && <UserInfo userInfo={userInfo} />}
+
             {languages && languagesIsPressed && <LanguagesPage languages={languages} />}
-            {followersIsPressed && (
-              <FollowersPage
-                user={user}
-                followersNum={userInfo.followers}
-                setError={() => setIsError({ active: true, status: 404 })}
-              />
-            )}
+
             {userRepos && reposIsPressed && (
               <ReposPage
                 userRepos={userRepos}
