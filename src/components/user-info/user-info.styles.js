@@ -14,7 +14,7 @@ export const UserInfoContainer = styled.div`
   }
 
   .bio {
-    padding: 5vh 0;
+    padding-top: 5vh;
     color: ${colors.whiteColor};
     font-size: ${fontSizes.small};
   }
@@ -24,7 +24,6 @@ export const UserInfoContainer = styled.div`
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    padding-top: 5vh;
     flex-wrap: wrap;
 
     .item {
@@ -34,6 +33,7 @@ export const UserInfoContainer = styled.div`
       flex-direction: row;
       justify-content: center;
       align-items: center;
+      padding: 5vmin;
 
       svg {
         margin-right: 1vw;

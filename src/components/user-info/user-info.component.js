@@ -5,6 +5,7 @@ import { TiBriefcase } from 'react-icons/ti';
 import { MdLocationOn } from 'react-icons/md';
 import { GoLink } from 'react-icons/go';
 import { GoCalendar } from 'react-icons/go';
+import { GiShadowFollower } from 'react-icons/gi';
 
 const UserInfo = ({ userInfo }) => {
   return (
@@ -64,6 +65,14 @@ const UserInfo = ({ userInfo }) => {
                 year: 'numeric',
               })}
             </IconContext.Provider>
+          </div>
+        )}
+        {userInfo.followers && (
+          <div className="item">
+            <IconContext.Provider value={{ size: '2em', color: 'white' }}>
+              <GiShadowFollower />
+            </IconContext.Provider>
+            {`${userInfo.followers} followers`}
           </div>
         )}
       </div>
