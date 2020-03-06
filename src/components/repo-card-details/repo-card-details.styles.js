@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors, fontSizes } from '../../global.styles';
 
 export const RepoCardDetailsContainer = styled.div`
   .arrow-icon {
@@ -7,6 +8,14 @@ export const RepoCardDetailsContainer = styled.div`
     flex-direction: row;
     justify-content: flex-start;
     margin-left: 4vw;
+  }
+
+  .title {
+    color: ${colors.textColor};
+    font-size: ${fontSizes.medium};
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5vh 0;
   }
 
   .charts {

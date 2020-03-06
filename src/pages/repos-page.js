@@ -8,6 +8,7 @@ const ReposPage = props => {
   const [data, setData] = useState([]);
   const [sortType, setSortType] = useState('stars');
   const [repoCardIsOpened, setRepocardIsOpened] = useState(false);
+  const [totalCommits, setTotalCommits] = useState();
   const [commits, setCommits] = useState([]);
   const [commitsWithContributors, setCommitsWithContributors] = useState(null);
 
@@ -35,6 +36,19 @@ const ReposPage = props => {
   const handleOpenRepoCard = async repoName => {
     setRepocardIsOpened(true);
     try {
+      const totComArr = [];
+      let fetchTotalCommits = [];
+      let page = 1;
+      do {
+        fetchTotalCommits = await fetchData(
+          `https://api.github.com/repos/${props.user}/${repoName}/commits?page=${page}&per_page=100`,
+          props.setError
+        );
+        totComArr.push(...fetchTotalCommits);
+        page += 1;
+      } while (fetchTotalCommits.length > 0);
+
+      setTotalCommits(totComArr.length);
       const yearCommits = await fetchData(
         `https://api.github.com/repos/${props.user}/${repoName}/stats/commit_activity`,
         props.setError
@@ -58,11 +72,12 @@ const ReposPage = props => {
 
   return (
     <>
-      {repoCardIsOpened && commits.length > 0 && commitsWithContributors ? (
+      {repoCardIsOpened && commits.length > 0 && totalCommits && commitsWithContributors ? (
         <RepoCardDetails
           goBack={goBack}
           commits={commits}
           commitsWithContributors={commitsWithContributors}
+          totalCommits={totalCommits}
         />
       ) : (
         <>
