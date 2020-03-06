@@ -8,8 +8,8 @@ const LineChart = ({ data }) => {
       style={{
         parent: {
           border: `1px solid ${colors.whiteColor}`,
-          maxWidth: '50%',
-          marginLeft: '50px',
+          maxWidth: '60%',
+          margin: '50px',
         },
       }}
     >
@@ -33,10 +33,11 @@ const LineChart = ({ data }) => {
       />
       <VictoryAxis
         label="Weeks"
+        tickFormat={(tick, i) => (i % 10 === 0 ? `${tick}` : '')}
         style={{
           axis: { stroke: `${colors.secondaryColor}` },
           axisLabel: { fontSize: 20, padding: 30, stroke: `${colors.textColor}` },
-          tickLabels: { stroke: `${colors.whiteColor}` },
+          tickLabels: { stroke: `${colors.whiteColor}`, angle: -60, fontSize: 7 },
         }}
       />
       <VictoryAxis

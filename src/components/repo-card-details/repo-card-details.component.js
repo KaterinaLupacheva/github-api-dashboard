@@ -15,8 +15,12 @@ const RepoCardDetails = ({ goBack, commits, commitsWithContributors }) => {
           <FaArrowLeft />
         </IconContext.Provider>
       </div>
-      {commits.length > 0 && <LineChart data={dataForLineChart(commits)} />}
-      {commitsWithContributors && <StackChart data={dataForStackChart(commitsWithContributors)} />}
+      <div className="charts">
+        {commits.length > 0 && <LineChart data={dataForLineChart(commits)} />}
+        {commitsWithContributors && (
+          <StackChart data={dataForStackChart(commitsWithContributors)} />
+        )}
+      </div>
     </RepoCardDetailsContainer>
   );
 };

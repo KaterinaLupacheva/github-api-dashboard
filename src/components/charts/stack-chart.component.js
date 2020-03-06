@@ -15,8 +15,8 @@ const StackChart = ({ data }) => {
       style={{
         parent: {
           border: `1px solid ${colors.whiteColor}`,
-          maxWidth: '50%',
-          marginLeft: '50px',
+          maxWidth: '60%',
+          margin: '50px',
         },
       }}
     >
@@ -29,8 +29,8 @@ const StackChart = ({ data }) => {
       />
       <VictoryStack
         animate={{
-          duration: 2000,
-          onLoad: { duration: 1000 },
+          duration: 1000,
+          onLoad: { duration: 500 },
         }}
         colorScale="warm"
       >
@@ -38,20 +38,16 @@ const StackChart = ({ data }) => {
         <VictoryArea data={data[1]} />
       </VictoryStack>
       <VictoryAxis
-        label="Weeks"
+        tickFormat={tick => ''}
         style={{
           axis: { stroke: `${colors.secondaryColor}` },
-          axisLabel: { fontSize: 20, padding: 30, stroke: `${colors.textColor}` },
-          tickLabels: { stroke: `${colors.whiteColor}` },
         }}
       />
       <VictoryAxis
         dependentAxis
-        label="Commits"
+        tickFormat={tick => ''}
         style={{
           axis: { stroke: `${colors.secondaryColor}` },
-          axisLabel: { fontSize: 20, padding: 30, stroke: `${colors.textColor}` },
-          tickLabels: { stroke: `${colors.whiteColor}` },
         }}
       />
     </VictoryChart>
