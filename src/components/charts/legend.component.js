@@ -6,7 +6,7 @@ import { colors, fontSizes } from '../../global.styles';
 
 const LegendContainer = styled.div`
   border: 1px solid ${colors.secondaryColor};
-  width: 20vw;
+  min-width: 20vw;
   color: ${colors.whiteColor};
   font-size: ${fontSizes.small};
   padding: 2vmin;
