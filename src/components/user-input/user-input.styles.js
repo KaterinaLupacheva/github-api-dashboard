@@ -32,7 +32,7 @@ export const UserInputForm = styled.form`
     font-weight: 400;
     cursor: pointer;
     border-radius: 10px;
-    width: 20vw;
+    min-width: 20vw;
     transition: all 0.5s ease;
 
     &:hover {
