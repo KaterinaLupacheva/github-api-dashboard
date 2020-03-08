@@ -74,7 +74,7 @@ const ReposPage = props => {
 
   return (
     <>
-      {repoCardIsOpened && commits.length > 0 && totalCommits && commitsWithContributors ? (
+      {repoCardIsOpened ? (
         <RepoCardDetails
           goBack={goBack}
           commits={commits}
