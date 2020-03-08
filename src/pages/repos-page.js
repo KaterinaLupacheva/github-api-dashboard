@@ -11,6 +11,7 @@ const ReposPage = props => {
   const [totalCommits, setTotalCommits] = useState();
   const [commits, setCommits] = useState([]);
   const [commitsWithContributors, setCommitsWithContributors] = useState(null);
+  const [repoName, setRepoName] = useState('');
 
   useEffect(() => {
     const sortRepos = type => {
@@ -35,6 +36,7 @@ const ReposPage = props => {
 
   const handleOpenRepoCard = async repoName => {
     setRepocardIsOpened(true);
+    setRepoName(repoName);
     try {
       const totComArr = [];
       let fetchTotalCommits = [];
@@ -78,6 +80,7 @@ const ReposPage = props => {
           commits={commits}
           commitsWithContributors={commitsWithContributors}
           totalCommits={totalCommits}
+          repoName={repoName}
         />
       ) : (
         <>

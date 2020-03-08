@@ -8,7 +8,7 @@ import StackChart from '../charts/stack-chart.component';
 import { dataForStackChart } from '../../utils/prepareDataForChart';
 import Legend from '../charts/legend.component';
 
-const RepoCardDetails = ({ goBack, commits, commitsWithContributors, totalCommits }) => {
+const RepoCardDetails = ({ goBack, commits, commitsWithContributors, totalCommits, repoName }) => {
   return (
     <RepoCardDetailsContainer>
       <div className="arrow-icon" onClick={goBack}>
@@ -16,7 +16,9 @@ const RepoCardDetails = ({ goBack, commits, commitsWithContributors, totalCommit
           <FaArrowLeft />
         </IconContext.Provider>
       </div>
-      <div className="title">{totalCommits} total commits</div>
+      <div className="title">
+        {repoName} - {totalCommits} total commits
+      </div>
       <div className="charts">
         {commits.length > 0 && <LineChart data={dataForLineChart(commits)} />}
         {commitsWithContributors && (
