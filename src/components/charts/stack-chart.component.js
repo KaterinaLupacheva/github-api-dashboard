@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  VictoryStack,
-  VictoryTheme,
-  VictoryChart,
-  VictoryLabel,
-  VictoryAxis,
-  VictoryArea,
-  VictoryLegend,
-} from 'victory';
+import { VictoryStack, VictoryChart, VictoryLabel, VictoryAxis, VictoryArea } from 'victory';
 import { colors } from '../../global.styles';
 
 const StackChart = ({ data }) => {
@@ -27,23 +19,7 @@ const StackChart = ({ data }) => {
         y={30}
         textAnchor="middle"
         style={{ fill: `${colors.whiteColor}`, fontSize: '20px' }}
-      />
-      <VictoryLegend
-        x={125}
-        y={50}
-        title="Legend"
-        centerTitle
-        orientation="horizontal"
-        gutter={20}
-        style={{
-          border: { stroke: `${colors.secondaryColor}` },
-          title: { fontSize: 20, fill: `${colors.whiteColor}` },
-          labels: { fill: `${colors.whiteColor}` },
-        }}
-        data={[
-          { name: 'By owner', symbol: { fill: `${colors.textColor}` } },
-          { name: 'By contributors', symbol: { fill: `${colors.backgroundLightDark}` } },
-        ]}
+        padding={50}
       />
       <VictoryStack
         animate={{

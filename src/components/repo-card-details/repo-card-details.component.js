@@ -6,6 +6,7 @@ import LineChart from '../charts/line-chart.component';
 import { dataForLineChart } from '../../utils/prepareDataForChart';
 import StackChart from '../charts/stack-chart.component';
 import { dataForStackChart } from '../../utils/prepareDataForChart';
+import Legend from '../charts/legend.component';
 
 const RepoCardDetails = ({ goBack, commits, commitsWithContributors, totalCommits }) => {
   return (
@@ -19,7 +20,10 @@ const RepoCardDetails = ({ goBack, commits, commitsWithContributors, totalCommit
       <div className="charts">
         {commits.length > 0 && <LineChart data={dataForLineChart(commits)} />}
         {commitsWithContributors && (
-          <StackChart data={dataForStackChart(commitsWithContributors)} />
+          <>
+            <StackChart data={dataForStackChart(commitsWithContributors)} />
+            <Legend />
+          </>
         )}
       </div>
     </RepoCardDetailsContainer>
