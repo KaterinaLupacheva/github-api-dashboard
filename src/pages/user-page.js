@@ -83,7 +83,7 @@ const UserPage = props => {
   return (
     <div>
       {error && error.active ? (
-        <Error error={error} />
+        <Error error={error} rateLimit={rateLimit} />
       ) : (
         <>
           <HamburgerMenuIcon isOpen={menuIsOpen} toggleMenu={() => toggleMenuIsOpen(!menuIsOpen)} />
