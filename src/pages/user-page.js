@@ -12,6 +12,7 @@ import ReposPage from './repos-page';
 import { Header } from './user-page.styles';
 
 const UserPage = props => {
+  const [menuIsOpen, toggleMenuIsOpen] = useState(true);
   const [error, setIsError] = useState({ active: false, type: 200 });
   const [userInfo, setUserInfo] = useState(null);
   const [userRepos, setUserRepos] = useState(null);
@@ -21,6 +22,8 @@ const UserPage = props => {
   const [reposIsPressed, setReposIsPressed] = useState(false);
   const location = useLocation();
   const user = location.state.user;
+
+  console.log('User page is open ' + menuIsOpen);
 
   const togglePressed = e => {
     switch (e) {
@@ -77,8 +80,9 @@ const UserPage = props => {
         <Error error={error} />
       ) : (
         <>
-          <HamburgerMenuIcon />
+          <HamburgerMenuIcon isOpen={menuIsOpen} toggleMenu={() => toggleMenuIsOpen(!menuIsOpen)} />
           <Sidebar
+            isOpen={menuIsOpen}
             handleClick={togglePressed}
             languagesIsPressed={languagesIsPressed}
             reposIsPressed={reposIsPressed}

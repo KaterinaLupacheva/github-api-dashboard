@@ -1,16 +1,13 @@
 import React from 'react';
 import { GoThreeBars } from 'react-icons/go';
 import { GoX } from 'react-icons/go';
-import './hamburger-menu-icon.styles.scss';
+import { HamburgerContainer } from './hamburger-icon.styles';
 
-const HamburgerMenuIcon = () => (
-  <>
-    <input type="checkbox" id="check" defaultChecked />
-    <label htmlFor="check">
-      <GoThreeBars id="btn" />
-      <GoX id="cancel" />
-    </label>
-  </>
+const HamburgerMenuIcon = ({ isOpen, toggleMenu }) => (
+  <HamburgerContainer isOpen={isOpen} onClick={toggleMenu}>
+    <GoThreeBars id="btn" />
+    <GoX id="cancel" />
+  </HamburgerContainer>
 );
 
 export default HamburgerMenuIcon;

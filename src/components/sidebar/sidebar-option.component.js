@@ -1,15 +1,15 @@
 import React from 'react';
-import './sidebar-option.styles.scss';
+import { SidebarOptionContainer } from './sidebar-option.styles';
 
 const SidebarOption = ({ icon, name, handleClick, isPressed }) => (
-  <li
+  <SidebarOptionContainer
     className={`${isPressed ? 'pressed' : ''} sidebar-option`}
     value={name}
     onClick={() => handleClick(name)}
   >
     {icon}
     {name}
-  </li>
+  </SidebarOptionContainer>
 );
 
 export default SidebarOption;

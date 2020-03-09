@@ -2,7 +2,7 @@ import React from 'react';
 import SidebarOption from './sidebar-option.component';
 import SIDEBAR_OPTIONS from './sidebar-options.data';
 
-import './sidebar.styles.scss';
+import { SidebarContainer, SectionContainer } from './sidebar.styles';
 
 const Sidebar = ({
   children,
@@ -11,6 +11,7 @@ const Sidebar = ({
   reposIsPressed,
   userIsPressed,
   user,
+  isOpen,
 }) => {
   const handleIsPressed = name => {
     if (languagesIsPressed && name === 'Languages') {
@@ -26,7 +27,7 @@ const Sidebar = ({
 
   return (
     <>
-      <div className="sidebar-container">
+      <SidebarContainer isOpen={isOpen}>
         <header>{user}</header>
         <ul>
           {SIDEBAR_OPTIONS.map(option => (
@@ -39,8 +40,8 @@ const Sidebar = ({
             />
           ))}
         </ul>
-      </div>
-      <section>{children}</section>
+      </SidebarContainer>
+      <SectionContainer isOpen={isOpen}>{children}</SectionContainer>
     </>
   );
 };

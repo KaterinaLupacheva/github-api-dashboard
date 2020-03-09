@@ -1,11 +1,14 @@
-.sidebar-option {
+import styled from 'styled-components';
+import { colors, fontSizes } from '../../global.styles';
+
+export const SidebarOptionContainer = styled.li`
   display: block;
   text-decoration: none;
   height: 100%;
   width: 100%;
   line-height: 65px;
-  font-size: 20px;
-  color: white;
+  font-size: ${fontSizes.small};
+  color: ${colors.whiteColor};
   padding-left: 40px;
   cursor: pointer;
   box-sizing: border-box;
@@ -21,10 +24,10 @@
     margin-right: 16px;
   }
 
-  &.pressed{
-    background-color: white;
+  &.pressed {
+    background-color: ${colors.whiteColor};
     padding-left: 50px;
     font-weight: bold;
     color: #063146;
   }
-}
+`;
