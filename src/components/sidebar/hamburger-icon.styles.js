@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, fontSizes } from '../../global.styles';
+import { colors, fontSizes, breakpoint } from '../../global.styles';
 
 export const HamburgerContainer = styled.div`
   #btn,
@@ -17,6 +17,10 @@ export const HamburgerContainer = styled.div`
     color: ${colors.whiteColor};
     padding: 6px 12px;
     transition: all 0.5s;
+
+    @media only screen and (max-width: ${breakpoint}) {
+      left: ${({ isOpen }) => (isOpen ? `40vw` : `1vmin`)};
+    }
   }
 
   #cancel {
@@ -27,5 +31,9 @@ export const HamburgerContainer = styled.div`
     color: ${colors.linkColor};
     padding: 4px 9px;
     transition: all 0.5s ease;
+
+    @media only screen and (max-width: ${breakpoint}) {
+      left: ${({ isOpen }) => (isOpen ? `34vw` : `-40vw`)};
+    }
   }
 `;
