@@ -1,7 +1,7 @@
 {
   "name": "github-api-dashboard",
   "version": "0.1.0",
-  "homepage": "https://github-dashboard.ramonak.io",
+  "homepage": "https://gh-dashboard.ramonak.io",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
