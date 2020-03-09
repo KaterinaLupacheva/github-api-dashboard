@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { fontSizes } from '../global.styles';
+import { fontSizes, colors } from '../global.styles';
 
 export const Header = styled.div`
   display: flex;
@@ -10,5 +10,7 @@ export const Header = styled.div`
   .home {
     text-transform: uppercase;
     font-size: ${fontSizes.medium};
+    color: ${colors.linkColor};
+    cursor: pointer;
   }
 `;

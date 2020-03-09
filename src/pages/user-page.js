@@ -13,6 +13,8 @@ import { Header } from './user-page.styles';
 
 const UserPage = props => {
   const [menuIsOpen, toggleMenuIsOpen] = useState(true);
+  const [header, setHeader] = useState('home');
+  const [repoCardIsOpened, setRepocardIsOpened] = useState(false);
   const [error, setIsError] = useState({ active: false, type: 200 });
   const [userInfo, setUserInfo] = useState(null);
   const [userRepos, setUserRepos] = useState(null);
@@ -94,9 +96,22 @@ const UserPage = props => {
             user={user}
           >
             <Header>
-              <Link to="/" className="home">
-                Home
-              </Link>
+              {header === 'home' ? (
+                <Link to="/" className="home">
+                  Home
+                </Link>
+              ) : (
+                <div
+                  className="home"
+                  onClick={() => {
+                    setRepocardIsOpened(false);
+                    setHeader('home');
+                  }}
+                >
+                  Back
+                </div>
+              )}
+
               {rateLimit && <RateLimit rateLimit={rateLimit} />}
             </Header>
 
@@ -110,6 +125,9 @@ const UserPage = props => {
                 reposNum={userInfo.public_repos}
                 user={user}
                 setError={() => setIsError({ active: true, status: 404 })}
+                setHeader={() => setHeader('back')}
+                setRepoCardIsOpened={() => setRepocardIsOpened(true)}
+                repoCardIsOpened={repoCardIsOpened}
               />
             )}
           </Sidebar>

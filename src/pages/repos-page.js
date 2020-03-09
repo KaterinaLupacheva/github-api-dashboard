@@ -7,7 +7,6 @@ import { fetchData } from '../utils/fetchData';
 const ReposPage = props => {
   const [data, setData] = useState([]);
   const [sortType, setSortType] = useState('stars');
-  const [repoCardIsOpened, setRepocardIsOpened] = useState(false);
   const [totalCommits, setTotalCommits] = useState();
   const [commits, setCommits] = useState([]);
   const [commitsWithContributors, setCommitsWithContributors] = useState(null);
@@ -35,8 +34,9 @@ const ReposPage = props => {
   }, [sortType, props.userRepos]);
 
   const handleOpenRepoCard = async repoName => {
-    setRepocardIsOpened(true);
+    props.setRepoCardIsOpened();
     setRepoName(repoName);
+    props.setHeader();
     try {
       const totComArr = [];
       let fetchTotalCommits = [];
@@ -66,17 +66,10 @@ const ReposPage = props => {
     }
   };
 
-  const goBack = () => {
-    setRepocardIsOpened(false);
-    setCommits([]);
-    setCommitsWithContributors({});
-  };
-
   return (
     <>
-      {repoCardIsOpened ? (
+      {props.repoCardIsOpened ? (
         <RepoCardDetails
-          goBack={goBack}
           commits={commits}
           commitsWithContributors={commitsWithContributors}
           totalCommits={totalCommits}
