@@ -10,6 +10,7 @@ import { fetchData } from '../utils/fetchData';
 import LanguagesPage from './languages-page';
 import ReposPage from './repos-page';
 import { Header } from './user-page.styles';
+import { breakpoint } from '../global.styles';
 
 const UserPage = props => {
   const [menuIsOpen, toggleMenuIsOpen] = useState(true);
@@ -22,8 +23,6 @@ const UserPage = props => {
   const [reposIsPressed, setReposIsPressed] = useState(false);
   const location = useLocation();
   const user = location.state.user;
-
-  console.log('User page is open ' + menuIsOpen);
 
   const togglePressed = e => {
     switch (e) {
@@ -48,6 +47,12 @@ const UserPage = props => {
         setReposIsPressed(false);
     }
   };
+
+  useEffect(() => {
+    if (window.innerWidth < 800) {
+      toggleMenuIsOpen(!menuIsOpen);
+    }
+  }, []);
 
   useEffect(() => {
     const getData = async () => {

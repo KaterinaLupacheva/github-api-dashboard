@@ -10,11 +10,13 @@ export const colors = {
 };
 
 export const fontSizes = {
-  large: '10vh',
-  medium: '5vh',
-  small: '3vh',
-  xs: '1vh',
+  large: '10vmin',
+  medium: '5vmin',
+  small: '3vmin',
+  xs: '1vmin',
 };
+
+export const breakpoint = '800px';
 
 const GlobalStyle = createGlobalStyle`
     body{

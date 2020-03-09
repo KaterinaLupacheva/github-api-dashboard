@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, fontSizes } from '../../global.styles';
+import { colors, fontSizes, breakpoint } from '../../global.styles';
 
 export const UserInputForm = styled.form`
   display: flex;
@@ -21,6 +21,10 @@ export const UserInputForm = styled.form`
     font-size: ${fontSizes.medium};
     color: ${colors.whiteColor};
     font-weight: 400;
+
+    @media only screen and (max-width: ${breakpoint}) {
+      width: 80vw;
+    }
   }
 
   .user-input-button {
@@ -34,6 +38,10 @@ export const UserInputForm = styled.form`
     border-radius: 10px;
     min-width: 20vw;
     transition: all 0.5s ease;
+
+    @media only screen and (max-width: ${breakpoint}) {
+      width: 30vw;
+    }
 
     &:hover {
       transform: scale(1.2);
