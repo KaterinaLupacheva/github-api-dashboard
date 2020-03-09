@@ -10,7 +10,6 @@ import { fetchData } from '../utils/fetchData';
 import LanguagesPage from './languages-page';
 import ReposPage from './repos-page';
 import { Header } from './user-page.styles';
-import { breakpoint } from '../global.styles';
 
 const UserPage = props => {
   const [menuIsOpen, toggleMenuIsOpen] = useState(true);
