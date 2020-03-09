@@ -5,7 +5,7 @@ export const Header = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 3vmin 0 3vmin 15vmin;
+  padding: 2vmin 0 2vmin 15vmin;
 
   .home {
     text-transform: uppercase;
