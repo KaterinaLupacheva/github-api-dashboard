@@ -1,6 +1,6 @@
 # github-api-dashboard
 
-A dashboard of a github account with stats and charts.
+A dashboard of a GitHub account with stats and charts.
 
 ## Run the app
 
