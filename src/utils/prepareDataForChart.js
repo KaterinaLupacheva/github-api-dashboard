@@ -15,7 +15,7 @@ export const dataForPieChart = data => {
 
 export const dataForLineChart = data => {
   const result = [];
-  data.forEach((week, i) => {
+  data.forEach(week => {
     result.push({
       x: new Date(week.week * 1000).toLocaleDateString('en-US', {
         month: 'short',

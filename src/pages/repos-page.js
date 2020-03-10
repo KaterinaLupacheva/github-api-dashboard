@@ -3,6 +3,7 @@ import Repos from '../components/repos/repos.component';
 import RepoCardDetails from '../components/repo-card-details/repo-card-details.component';
 import { ReposTitle, DropDown } from './repos-page.styles';
 import { fetchData } from '../utils/fetchData';
+import { mockCommits, mockCommitsWithContributors } from '../utils/mockdata';
 
 const ReposPage = props => {
   const [data, setData] = useState([]);
@@ -33,10 +34,7 @@ const ReposPage = props => {
     sortRepos(sortType);
   }, [sortType, props.userRepos]);
 
-  const handleOpenRepoCard = async repoName => {
-    props.setRepoCardIsOpened();
-    setRepoName(repoName);
-    props.setHeader();
+  const fetchCommitsData = async repoName => {
     try {
       const totComArr = [];
       let fetchTotalCommits = [];
@@ -63,6 +61,19 @@ const ReposPage = props => {
       setCommitsWithContributors(commitsParticipation);
     } catch (error) {
       props.setError();
+    }
+  };
+
+  const handleOpenRepoCard = repoName => {
+    props.setRepoCardIsOpened();
+    setRepoName(repoName);
+    props.setHeader();
+    if (!props.useMockData) {
+      fetchCommitsData(repoName);
+    } else {
+      setTotalCommits(142);
+      setCommits(mockCommits);
+      setCommitsWithContributors(mockCommitsWithContributors);
     }
   };
 

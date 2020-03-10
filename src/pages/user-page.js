@@ -139,6 +139,7 @@ const UserPage = props => {
                 setHeader={() => setHeader('back')}
                 setRepoCardIsOpened={() => setRepocardIsOpened(true)}
                 repoCardIsOpened={repoCardIsOpened}
+                useMockData={useMockData}
               />
             )}
           </Sidebar>
