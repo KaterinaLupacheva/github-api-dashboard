@@ -35,7 +35,7 @@ const LanguagesPage = ({ user, repos, useMockData }) => {
       setLanguages(mockLanguages);
       languagesStructure(mockLanguages);
     }
-  }, [languages]);
+  }, [languages, repos, useMockData, user]);
 
   return (
     <>
