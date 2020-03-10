@@ -25,7 +25,7 @@ const UserPage = props => {
   const [languagesIsPressed, setLanguagesIsPressed] = useState(false);
   const [reposIsPressed, setReposIsPressed] = useState(false);
   const location = useLocation();
-  const user = location.state.user;
+  const user = useMockData ? '' : location.state.user;
 
   const togglePressed = e => {
     switch (e) {
@@ -82,12 +82,12 @@ const UserPage = props => {
     if (!useMockData) {
       getData();
     } else {
-      console.log('mocking');
       setIsError({ ...error, active: false });
+      togglePressed('User');
       setUserInfo(mockUser);
       setUserRepos(mockRepos);
     }
-  }, [user, useMockData, error]);
+  }, [user, useMockData]);
 
   return (
     <div>
@@ -102,7 +102,7 @@ const UserPage = props => {
             languagesIsPressed={languagesIsPressed}
             reposIsPressed={reposIsPressed}
             userIsPressed={userIsPressed}
-            user={user}
+            user={useMockData ? 'MOCK DATA' : user}
           >
             <Header>
               {header === 'home' ? (
