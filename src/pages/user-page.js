@@ -10,7 +10,7 @@ import { fetchData } from '../utils/fetchData';
 import LanguagesPage from './languages-page';
 import ReposPage from './repos-page';
 import { Header } from './user-page.styles';
-import { mockUser } from '../utils/mockdata';
+import { mockUser, mockRepos } from '../utils/mockdata';
 
 const UserPage = props => {
   const [useMockData, setUseMockData] = useState(false);
@@ -85,6 +85,7 @@ const UserPage = props => {
       console.log('mocking');
       setIsError({ ...error, active: false });
       setUserInfo(mockUser);
+      setUserRepos(mockRepos);
     }
   }, [user, useMockData]);
 
