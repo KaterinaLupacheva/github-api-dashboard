@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ErrorPageContainer } from './error.styles';
 import { Link } from 'react-router-dom';
 
-const Error = ({ error, rateLimit }) => {
+const Error = ({ error, rateLimit, mockdata }) => {
   const [minutes, setMinutes] = useState(null);
 
   useEffect(() => {
@@ -37,7 +37,9 @@ const Error = ({ error, rateLimit }) => {
                 >
                   {` rate limit`}
                 </a>
-                {`. Try again in ${minutes} minutes!`}
+                {`. Try again in ${minutes} minutes! Or `}
+                <span className="demo-version" onClick={mockdata}>{`view demo version`}</span>
+                {` with a mock data.`}
               </span>
             </>
           ) : error.status === 404 ? (

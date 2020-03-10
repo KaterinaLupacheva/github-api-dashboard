@@ -26,5 +26,10 @@ export const ErrorPageContainer = styled.div`
     align-items: center;
     justify-content: center;
     height: 80vh;
+
+    .demo-version {
+      color: ${colors.linkColor};
+      cursor: pointer;
+    }
   }
 `;

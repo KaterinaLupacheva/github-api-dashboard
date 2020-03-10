@@ -1,6 +1,7 @@
 let languages = {};
 
 export const fetchData = async (url, setIsError) => {
+  console.log('Fetching... ' + url);
   const result = await fetch(url);
   if (result.status === 403) {
     return setIsError({ active: true, status: 403 });
@@ -25,6 +26,7 @@ const fetchUrl = async url => {
 const fetchLanguages = async (names, user) => {
   const requests = names.map(async name => {
     const url = `https://api.github.com/repos/${user}/${name}/languages`;
+    console.log('Fetching languages ' + url);
     return await fetchUrl(url);
   });
   return Promise.all(requests);

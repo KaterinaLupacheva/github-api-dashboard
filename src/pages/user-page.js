@@ -12,6 +12,7 @@ import ReposPage from './repos-page';
 import { Header } from './user-page.styles';
 
 const UserPage = props => {
+  const [useMockData, setUseMockData] = useState(false);
   const [menuIsOpen, toggleMenuIsOpen] = useState(true);
   const [header, setHeader] = useState('home');
   const [repoCardIsOpened, setRepocardIsOpened] = useState(false);
@@ -77,13 +78,17 @@ const UserPage = props => {
         setIsError({ active: true, status: 404 });
       }
     };
-    getData();
-  }, [user]);
+    if (!useMockData) {
+      getData();
+    } else {
+      console.log('mocking');
+    }
+  }, [user, useMockData]);
 
   return (
     <div>
       {error && error.active ? (
-        <Error error={error} rateLimit={rateLimit} />
+        <Error error={error} rateLimit={rateLimit} mockdata={() => setUseMockData(true)} />
       ) : (
         <>
           <HamburgerMenuIcon isOpen={menuIsOpen} toggleMenu={() => toggleMenuIsOpen(!menuIsOpen)} />
