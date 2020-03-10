@@ -11,8 +11,14 @@ export const mockUser = {
   followers: 100,
 };
 
-const repos = {};
+export const mockRepos = [{}];
 
-const languages = {};
+export const mockLanguages = {
+  Javascript: 100200300,
+  HTML: 200500702,
+  CSS: 40030020,
+  Java: 300500206,
+  C: 20000020,
+};
 
 const repoDetails = {};

@@ -125,7 +125,9 @@ const UserPage = props => {
 
             {userIsPressed && userInfo && <UserInfo userInfo={userInfo} />}
 
-            {languagesIsPressed && <LanguagesPage user={user} repos={userRepos} />}
+            {languagesIsPressed && (
+              <LanguagesPage user={user} repos={userRepos} useMockData={useMockData} />
+            )}
 
             {userRepos && reposIsPressed && (
               <ReposPage

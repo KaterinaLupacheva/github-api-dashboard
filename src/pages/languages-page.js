@@ -4,8 +4,9 @@ import PieChart from '../components/charts/pie-chart.component';
 import { dataForPieChart } from '../utils/prepareDataForChart';
 import LanguagesTable from '../components/table/languages-table.component';
 import { TotalLanguages, DataRow } from './languages-page.styles';
+import { mockLanguages } from '../utils/mockdata';
 
-const LanguagesPage = ({ user, repos }) => {
+const LanguagesPage = ({ user, repos, useMockData }) => {
   const [languages, setLanguages] = useState(null);
   const [structure, setStructure] = useState([]);
 
@@ -27,8 +28,12 @@ const LanguagesPage = ({ user, repos }) => {
       setLanguages(lan);
       languagesStructure(lan);
     };
-    if (!languages) {
+
+    if (!languages && !useMockData) {
       fetchLanguages();
+    } else {
+      setLanguages(mockLanguages);
+      languagesStructure(mockLanguages);
     }
   }, [languages]);
 
