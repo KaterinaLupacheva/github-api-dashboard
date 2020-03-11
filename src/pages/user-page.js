@@ -87,6 +87,7 @@ const UserPage = props => {
       setUserInfo(mockUser);
       setUserRepos(mockRepos);
     }
+    return () => setUseMockData(false);
   }, [user, useMockData]);
 
   return (
