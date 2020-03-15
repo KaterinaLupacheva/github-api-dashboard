@@ -29,7 +29,7 @@ const LanguagesPage = ({ user, repos, useMockData }) => {
       languagesStructure(lan);
     };
 
-    if (!languages && !useMockData) {
+    if (!useMockData) {
       fetchLanguages();
     } else {
       setLanguages(mockLanguages);
