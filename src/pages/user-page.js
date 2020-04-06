@@ -61,7 +61,10 @@ const UserPage = props => {
     const getData = async () => {
       try {
         //fetch number of requests left
-        const rateLimit = await fetchData(`https://api.github.com/rate_limit`, setIsError);
+        const rateLimit = await fetchData(
+          `https://cors-anywhere.herokuapp.com/https://api.github.com/rate_limit`,
+          setIsError
+        );
         setRateLimit(rateLimit.resources.core);
         if (rateLimit.resources.core.remaining < 1) {
           setIsError({ active: true, status: 403 });
