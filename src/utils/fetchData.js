@@ -7,7 +7,8 @@ export const fetchData = async (url, setIsError) => {
   } else if (result.status === 404) {
     return setIsError({ active: true, status: 404 });
   }
-  return await result.json();
+  const res = await result.json();
+  return res;
 };
 
 export const fetchAllLanguages = async (repos, user) => {

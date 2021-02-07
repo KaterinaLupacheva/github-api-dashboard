@@ -17,7 +17,7 @@ const Error = ({ error, rateLimit, mockdata }) => {
     if (error.status === 403) {
       calculateMinutes();
     }
-  }, [error.status, rateLimit.reset]);
+  }, [error.status, rateLimit]);
 
   return (
     <ErrorPageContainer>
