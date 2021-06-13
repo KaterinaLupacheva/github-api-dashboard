@@ -3,8 +3,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import StartPage from './pages/start-page';
 import UserPage from './pages/user-page';
 import GlobalStyle from './global.styles';
+import useViewCounter from './useViewCounter.hook';
 
 function App() {
+  useViewCounter();
   return (
     <>
       <GlobalStyle />
