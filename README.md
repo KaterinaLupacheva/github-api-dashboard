@@ -5,10 +5,9 @@ A dashboard of a GitHub account with stats and charts.
 ## Run the app
 
 1. Clone this repo
-2. Run ```npm install```
-3. Run ```npm start```
-
-Please, keep in mind [GitHub API Rate Limiting](https://developer.github.com/v3/#rate-limiting)
+2. create .env file and add your GitHub personal access token value
+3. Run `npm install`
+4. Run `npm start`
 
 ## Technologies used
 
