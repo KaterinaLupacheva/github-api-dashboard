@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import HamburgerMenuIcon from '../components/sidebar/hamburger-menu-icon.component';
 import Sidebar from '../components/sidebar/sidebar.component';
 import UserInfo from '../components/user-info/user-info.component';
@@ -61,10 +60,7 @@ const UserPage = props => {
     const getData = async () => {
       try {
         //fetch number of requests left
-        const rateLimit = await fetchData(
-          `https://api.github.com/rate_limit`,
-          setIsError
-        );
+        const rateLimit = await fetchData(`https://api.github.com/rate_limit`, setIsError);
         setRateLimit(rateLimit.resources.core);
         if (rateLimit.resources.core.remaining < 1) {
           setIsError({ active: true, status: 403 });
@@ -92,10 +88,10 @@ const UserPage = props => {
     }
     return () => setUseMockData(false);
   }, [user, useMockData]);
-
+  console.log(error, useMockData);
   return (
     <div>
-      {error && error.active ? (
+      {error && error.active && !useMockData ? (
         <Error error={error} rateLimit={rateLimit} mockdata={() => setUseMockData(true)} />
       ) : (
         <>

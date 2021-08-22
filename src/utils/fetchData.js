@@ -1,7 +1,13 @@
+const TOKEN = process.env.REACT_APP_GITHUB_ACCESS_TOKEN;
+
 let languages = {};
 
 export const fetchData = async (url, setIsError) => {
-  const result = await fetch(url);
+  const result = await fetch(url, {
+    headers: {
+      Authorization: `token ${TOKEN}`,
+    },
+  });
   if (result.status === 403) {
     return setIsError({ active: true, status: 403 });
   } else if (result.status === 404) {
@@ -19,14 +25,18 @@ export const fetchAllLanguages = async (repos, user) => {
 };
 
 const fetchUrl = async url => {
-  const languages = await fetch(url);
-  return await languages.json();
+  const languages = await fetch(url, {
+    headers: {
+      Authorization: `token ${TOKEN}`,
+    },
+  });
+  return languages.json();
 };
 
 const fetchLanguages = async (names, user) => {
   const requests = names.map(async name => {
     const url = `https://api.github.com/repos/${user}/${name}/languages`;
-    return await fetchUrl(url);
+    return fetchUrl(url);
   });
   return Promise.all(requests);
 };
